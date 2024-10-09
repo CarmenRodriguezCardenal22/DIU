@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="361.0" style="-fx-background-color: FF0000;" stylesheets="@../../../estilos/estilosContador.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diu.controller.HelloController">
+   <children>
+      <Button id="btCero" fx:id="btCero" layoutX="202.0" layoutY="74.0" mnemonicParsing="false" onAction="#cero" styleClass="btCero" text="0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button id="btNegativo" fx:id="btNegativo" layoutX="125.0" layoutY="74.0" mnemonicParsing="false" onAction="#menos" styleClass="btNegativo" text="-">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button id="btPositivo" fx:id="btPositivo" layoutX="40.0" layoutY="74.0" mnemonicParsing="false" onAction="#mas" styleClass="btPositivo" text="+">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label id="lbContador" fx:id="lbContador" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" layoutY="128.0" prefHeight="31.0" prefWidth="76.0" styleClass="lbContador" text="0" textAlignment="CENTER">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CajaTexto" layoutX="61.0" layoutY="23.0" onAction="#texto" />
+      <ProgressBar fx:id="Barra" layoutX="42.0" layoutY="172.0" prefWidth="200.0" progress="0.0" />
+   </children>
+</Pane>

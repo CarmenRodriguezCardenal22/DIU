@@ -1,0 +1,20 @@
+.raiz {
+    -fx-base: #FF0000;
+}
+
+#btPositivo {
+    -fx-base: #FFFFFF;
+}
+
+#btNegativo {
+    -fx-base: #FFFFFF;
+}
+
+#btCero {
+    -fx-base: #000000;
+    -fx-text-fill: #FFFFFF;
+}
+
+#lbContador {
+    -fx-text-fill: #0000FF;
+}
