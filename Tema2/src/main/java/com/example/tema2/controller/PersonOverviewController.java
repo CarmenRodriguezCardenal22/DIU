@@ -1,5 +1,6 @@
 package com.example.tema2.controller;
 
+import com.example.tema2.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -29,7 +30,7 @@ public class PersonOverviewController {
     @FXML
     private Label birthdayLabel;
 
-    private MainApp mainApp;
+    private MainApp mainApp=new MainApp();
 
     public PersonOverviewController() {
     }
@@ -57,7 +58,7 @@ public class PersonOverviewController {
             streetLabel.setText(person.getStreet());
             postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
             cityLabel.setText(person.getCity());
-
+            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
             firstNameLabel.setText("");
             lastNameLabel.setText("");
