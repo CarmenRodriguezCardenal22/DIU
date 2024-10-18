@@ -13,17 +13,16 @@ public class HelloController {
     private TextField dolares;
 
     @FXML
-    public float guardarEuros() {
+    public float guardarEuros() throws ExcepcionMoneda {
         return Float.valueOf(euros.getText());
     }
     private ConversorModelo conversorModelo;
     public void setConversorModelo(ConversorModelo conversorModelo) {
         this.conversorModelo = conversorModelo;
     }
-    public double convertirMoneda() throws ExcepcionMoneda {
-        return conversorModelo.conversion(guardarEuros());
-    }
-    public void guardarDolares() throws ExcepcionMoneda{
-        dolares.setText(String.valueOf(convertirMoneda()));
+    public void convertirMoneda() throws ExcepcionMoneda {
+        double dolar= conversorModelo.conversion(guardarEuros());
+        dolares.setText(String.valueOf(dolar));
+
     }
 }

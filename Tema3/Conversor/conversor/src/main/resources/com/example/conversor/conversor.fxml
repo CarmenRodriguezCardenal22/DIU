@@ -26,7 +26,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="euros" layoutX="111.0" layoutY="186.0" />
+      <TextField fx:id="euros" layoutX="111.0" layoutY="186.0" onAction="#convertirMoneda" />
       <TextField fx:id="dolares" layoutX="329.0" layoutY="186.0" />
    </children>
 </Pane>
