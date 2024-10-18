@@ -1,5 +1,6 @@
 package com.example.conversor.controller;
 
+import Modelo.ExcepcionMoneda;
 import com.example.conversor.modelo.ConversorModelo;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +13,17 @@ public class HelloController {
     private TextField dolares;
 
     @FXML
-    protected float guardarEuros() {
+    public float guardarEuros() {
         return Float.valueOf(euros.getText());
+    }
+    private ConversorModelo conversorModelo;
+    public void setConversorModelo(ConversorModelo conversorModelo) {
+        this.conversorModelo = conversorModelo;
+    }
+    public double convertirMoneda() throws ExcepcionMoneda {
+        return conversorModelo.conversion(guardarEuros());
+    }
+    public void guardarDolares() throws ExcepcionMoneda{
+        dolares.setText(String.valueOf(convertirMoneda()));
     }
 }
