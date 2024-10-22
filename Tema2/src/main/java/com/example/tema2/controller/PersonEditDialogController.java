@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import com.example.tema2.Person;
-import com.example.tema2.DateUtil;
+import com.example.tema2.vista.Person;
+import com.example.tema2.modelo.DateUtil;
 
 public class PersonEditDialogController {
     @FXML

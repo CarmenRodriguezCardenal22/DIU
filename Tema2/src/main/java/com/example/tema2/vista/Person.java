@@ -1,4 +1,4 @@
-package com.example.tema2;
+package com.example.tema2.vista;
 
 
 import java.time.LocalDate;

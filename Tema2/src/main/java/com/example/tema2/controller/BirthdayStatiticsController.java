@@ -11,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
-import com.example.tema2.Person;
+import com.example.tema2.vista.Person;
 
 public class BirthdayStatiticsController {
 

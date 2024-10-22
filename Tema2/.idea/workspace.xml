@@ -5,14 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Tema3/Conversor/conversor/src/main/java/com/example/conversor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Conversor/conversor/src/main/java/com/example/conversor/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Conversor/conversor/src/main/java/com/example/conversor/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Conversor/conversor/src/main/java/com/example/conversor/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Conversor/conversor/src/main/resources/com/example/conversor/conversor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Conversor/conversor/src/main/resources/com/example/conversor/conversor.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/ExceptionPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/PersonVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/PersonRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/ConexionJDBC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/vista/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/BirthdayStatiticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/BirthdayStatiticsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonEditDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonOverviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonOverviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonOverview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonOverview.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -41,20 +63,28 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2nC2qQfFFGadSNZay5uUmGZqlbi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/usuario/DIU/Tema2&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MainApp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/usuario/DIU/Tema2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -72,7 +102,9 @@
       <option name="presentableId" value="Default" />
       <updated>1728462929162</updated>
       <workItem from="1729250006253" duration="155000" />
-      <workItem from="1729254907353" duration="90000" />
+      <workItem from="1729254907353" duration="238000" />
+      <workItem from="1729496152818" duration="14000" />
+      <workItem from="1729582639582" duration="4698000" />
     </task>
     <servers />
   </component>

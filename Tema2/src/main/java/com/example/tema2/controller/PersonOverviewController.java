@@ -1,13 +1,13 @@
 package com.example.tema2.controller;
 
-import com.example.tema2.DateUtil;
+import com.example.tema2.modelo.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import com.example.tema2.MainApp;
-import com.example.tema2.Person;
+import com.example.tema2.vista.Person;
 
 public class PersonOverviewController {
     @FXML

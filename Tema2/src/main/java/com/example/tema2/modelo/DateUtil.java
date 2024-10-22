@@ -1,4 +1,4 @@
-package com.example.tema2;
+package com.example.tema2.modelo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -5,17 +5,15 @@ import java.io.IOException;
 import com.example.tema2.controller.BirthdayStatiticsController;
 import com.example.tema2.controller.PersonEditDialogController;
 import com.example.tema2.controller.PersonOverviewController;
+import com.example.tema2.vista.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
