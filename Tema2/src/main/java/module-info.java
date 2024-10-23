@@ -20,4 +20,6 @@ module com.example.tema2 {
     opens com.example.tema2.vista to javafx.fxml;
     exports com.example.tema2.modelo;
     opens com.example.tema2.modelo to javafx.fxml;
+    exports com.example.tema2.modelo.utilidad;
+    opens com.example.tema2.modelo.utilidad to javafx.fxml;
 }

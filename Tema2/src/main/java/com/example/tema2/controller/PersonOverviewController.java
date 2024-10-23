@@ -1,6 +1,7 @@
 package com.example.tema2.controller;
 
-import com.example.tema2.modelo.DateUtil;
+import com.example.tema2.modelo.AgendaModelo;
+import com.example.tema2.modelo.utilidad.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -10,6 +11,12 @@ import com.example.tema2.MainApp;
 import com.example.tema2.vista.Person;
 
 public class PersonOverviewController {
+    AgendaModelo agendaModelo;
+
+    public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+    }
+
     @FXML
     private TableView<Person> personTable;
     @FXML
@@ -56,7 +63,7 @@ public class PersonOverviewController {
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+            postalCodeLabel.setText(person.getPostalCode());
             cityLabel.setText(person.getCity());
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {

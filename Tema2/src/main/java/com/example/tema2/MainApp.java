@@ -5,6 +5,8 @@ import java.io.IOException;
 import com.example.tema2.controller.BirthdayStatiticsController;
 import com.example.tema2.controller.PersonEditDialogController;
 import com.example.tema2.controller.PersonOverviewController;
+import com.example.tema2.modelo.AgendaModelo;
+import com.example.tema2.modelo.repository.impl.PersonRepositoryImpl;
 import com.example.tema2.vista.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -52,17 +54,17 @@ public class MainApp extends Application {
     private ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public MainApp() {
-        // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Ruth", "Mueller"));
-        personData.add(new Person("Heinz", "Kurz"));
-        personData.add(new Person("Cornelia", "Meier"));
-        personData.add(new Person("Werner", "Meyer"));
-        personData.add(new Person("Lydia", "Kunz"));
-        personData.add(new Person("Anna", "Best"));
-        personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        try{
+            PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+            AgendaModelo agendaModelo = new AgendaModelo();
+            agendaModelo.setPersonRepository(personRepository);
+            System.out.println(agendaModelo.obtenerPersonas().toString());
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
+
     public ObservableList<Person> getPersonData() {
         return personData;
     }

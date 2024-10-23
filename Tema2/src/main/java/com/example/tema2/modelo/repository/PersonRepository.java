@@ -6,7 +6,7 @@ import com.example.tema2.modelo.PersonVO;
 import java.util.ArrayList;
 
 public interface PersonRepository {
-    ArrayList<PersonVO> ObtenerListaMonedas() throws ExceptionPerson;
+    ArrayList<PersonVO> ObtenerListaPersonas() throws ExceptionPerson;
 
     void addPerson(PersonVO var1) throws ExceptionPerson;
 

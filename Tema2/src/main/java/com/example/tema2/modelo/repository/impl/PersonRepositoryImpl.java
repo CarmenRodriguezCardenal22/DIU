@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PersonRepositoryImpl implements PersonRepository {
@@ -20,7 +21,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     public PersonRepositoryImpl() {
     }
 
-    public ArrayList<PersonVO> ObtenerListaMonedas() throws ExceptionPerson {
+    public ArrayList<PersonVO> ObtenerListaPersonas() throws ExceptionPerson {
         try {
             Connection conn = this.conexion.conectarBD();
             this.personas = new ArrayList();
@@ -28,18 +29,19 @@ public class PersonRepositoryImpl implements PersonRepository {
             this.sentencia = "SELECT * FROM personas";
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
 
-            while(rs.next()) {
+            while (rs.next()) {
                 Integer codigo = rs.getInt("codigo");
-                String nom = rs.getString("nombre");
-                String apell = rs.getString("apellidos");
-                String direc = rs.getString("direccion");
-                String postal = rs.getString("código postal");
-                String ciud = rs.getString("ciudad");
-                String fn = rs.getString("fecha de nacimiento");
-                this.persona = new PersonVO(nom,apell,direc,postal,ciud,fn);
-                this.persona.setCod(codigo);
-                this.personas.add(this.persona);
+                String nombre = rs.getString("nombre");
+                String apellidos = rs.getString("apellidos");
+                String direccion = rs.getString("direccion");
+                String codigoPostal = rs.getString("codigo_postal");
+                String ciudad = rs.getString("ciudad");
+                LocalDate fechaNacimiento = rs.getDate("fecha_de_nacimiento").toLocalDate();
+                PersonVO persona = new PersonVO(nombre, apellidos, direccion, codigoPostal, ciudad, fechaNacimiento);
+                persona.setCod(codigo);
+                this.personas.add(persona);
             }
+
 
             this.conexion.desconectarBD(conn);
             return this.personas;
