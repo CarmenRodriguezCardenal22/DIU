@@ -24,25 +24,26 @@ public class PersonRepositoryImpl implements PersonRepository {
     public ArrayList<PersonVO> ObtenerListaPersonas() throws ExceptionPerson {
         try {
             Connection conn = this.conexion.conectarBD();
+            if (conn == null) {
+                throw new ExceptionPerson("Conexión a la base de datos fallida");
+            }
             this.personas = new ArrayList();
             this.stmt = conn.createStatement();
             this.sentencia = "SELECT * FROM personas";
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
 
             while (rs.next()) {
-                Integer codigo = rs.getInt("codigo");
-                String nombre = rs.getString("nombre");
-                String apellidos = rs.getString("apellidos");
-                String direccion = rs.getString("direccion");
-                String codigoPostal = rs.getString("codigo_postal");
-                String ciudad = rs.getString("ciudad");
-                LocalDate fechaNacimiento = rs.getDate("fecha_de_nacimiento").toLocalDate();
-                PersonVO persona = new PersonVO(nombre, apellidos, direccion, codigoPostal, ciudad, fechaNacimiento);
+                Integer codigo = rs.getInt("Código");
+                String nombre = rs.getString("Nombre");
+                String apellidos = rs.getString("Apellidos");
+                String direccion = rs.getString("Dirección");
+                String codigoPostal = rs.getString("Código Postal");
+                String ciudad = rs.getString("Ciudad");
+                LocalDate fechaNacimiento = rs.getDate("Fecha de Nacimiento").toLocalDate();
+                PersonVO persona = new PersonVO(codigo, nombre, apellidos, direccion, codigoPostal, ciudad, fechaNacimiento);
                 persona.setCod(codigo);
                 this.personas.add(persona);
             }
-
-
             this.conexion.desconectarBD(conn);
             return this.personas;
         } catch (SQLException var6) {
@@ -54,11 +55,12 @@ public class PersonRepositoryImpl implements PersonRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            this.sentencia = "INSERT INTO personas (nombre, apellidos, dirrecion, codigoPostal, ciudad, fechaNacimiento) VALUES ('" + m.getFirstName() + "','" + m.getLastName() + "','"  + m.getStreet() + "','" + m.getPostalCode() + "','" + m.getCity() + "','" + m.getBirthday() + "');";
+            this.sentencia = "INSERT INTO personas (nombre, apellidos, direccion, codigoPostal, ciudad, fechaNacimiento) VALUES ('" + m.getFirstName() + "','" + m.getLastName() + "','"  + m.getStreet() + "','" + m.getPostalCode() + "','" + m.getCity() + "','" + m.getBirthday() + "');";
             this.stmt.executeUpdate(this.sentencia);
             this.stmt.close();
             this.conexion.desconectarBD(conn);
         } catch (SQLException var3) {
+            System.out.println(var3.getMessage());
             throw new ExceptionPerson("No se ha podido realizar la operación");
         }
     }
@@ -68,11 +70,12 @@ public class PersonRepositoryImpl implements PersonRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM personas WHERE codigo = %d", idPerson);
+            String sql = String.format("DELETE FROM personas WHERE Código = %d", idPerson);
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
-            throw new ExceptionPerson("No se ha podido relaizr la eliminación");
+            System.out.println(var5.getMessage());
+            throw new ExceptionPerson("No se ha podido realizar la eliminación");
         }
     }
 
@@ -80,10 +83,11 @@ public class PersonRepositoryImpl implements PersonRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE personas SET nombre = '%s', apellidos = '%s' WHERE codigo = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(),personVO.getPostalCode(), personVO.getCity(), personVO.getBirthday());
+            String sql = String.format("UPDATE personas SET Código= '%s', Nombre = '%s', Apellidos = '%s', Dirección = '%s', Código Postal = '%s', Ciudad = '%s', Fecha de Nacimiento = '%s' WHERE Código = %s", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(),personVO.getPostalCode(), personVO.getCity(), personVO.getBirthday());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
-            throw new ExceptionPerson("No se ha podido relaizr la edición");
+            System.out.println(var4.getMessage());
+            throw new ExceptionPerson("No se ha podido realizar la edición");
         }
     }
 

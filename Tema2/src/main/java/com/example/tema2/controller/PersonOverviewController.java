@@ -1,6 +1,7 @@
 package com.example.tema2.controller;
 
 import com.example.tema2.modelo.AgendaModelo;
+import com.example.tema2.modelo.ExceptionPerson;
 import com.example.tema2.modelo.utilidad.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -60,6 +61,7 @@ public class PersonOverviewController {
     }
     private void showPersonDetails(Person person) {
         if (person != null) {
+            //codigo.setText(String.valueOf(person.getCod()));
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
@@ -67,6 +69,7 @@ public class PersonOverviewController {
             cityLabel.setText(person.getCity());
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
+            //codigo.setText("");
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             streetLabel.setText("");
@@ -76,10 +79,11 @@ public class PersonOverviewController {
         }
     }
     @FXML
-    private void handleDeletePerson() {
+    private void handleDeletePerson() throws ExceptionPerson {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
+            agendaModelo.deletePersonas(selectedIndex);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
@@ -90,21 +94,23 @@ public class PersonOverviewController {
         }
     }
     @FXML
-    private void handleNewPerson() {
+    private void handleNewPerson() throws ExceptionPerson {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);
+            agendaModelo.addPersonas(tempPerson);
         }
     }
 
     @FXML
-    private void handleEditPerson() {
+    private void handleEditPerson() throws ExceptionPerson {
         Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
+                agendaModelo.editPersonas(selectedPerson);
             }
 
         } else {

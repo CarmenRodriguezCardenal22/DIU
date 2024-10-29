@@ -23,6 +23,7 @@ public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
+    AgendaModelo agendaModelo = new AgendaModelo();
 
     @Override
     public void start(Stage primaryStage) {
@@ -56,9 +57,10 @@ public class MainApp extends Application {
     public MainApp() {
         try{
             PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
-            AgendaModelo agendaModelo = new AgendaModelo();
             agendaModelo.setPersonRepository(personRepository);
-            System.out.println(agendaModelo.obtenerPersonas().toString());
+            //System.out.println(agendaModelo.obtenerPersonas());
+            personData.addAll(agendaModelo.mostrarPersonas());
+
         }
         catch(Exception e){
             e.printStackTrace();
@@ -81,6 +83,7 @@ public class MainApp extends Application {
 
             PersonOverviewController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setAgendaModelo(agendaModelo);
 
         } catch (IOException e) {
             e.printStackTrace();

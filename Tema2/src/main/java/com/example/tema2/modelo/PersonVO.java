@@ -3,11 +3,14 @@ package com.example.tema2.modelo;
 import java.time.LocalDate;
 
 public class PersonVO {
-    int cod;
+    Integer cod;
     String firstName, lastName, street, postalCode, city;
     LocalDate birthday;
 
-    public PersonVO(String firstName, String lastName, String street, String postalCode, String city, LocalDate birthday) {
+    public PersonVO() {this(0,null,null,null,null,null,null);}
+
+    public PersonVO(Integer cod,String firstName, String lastName, String street, String postalCode, String city, LocalDate birthday) {
+        this.cod = cod;
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -42,8 +45,8 @@ public class PersonVO {
     public void setBirthday(LocalDate birthday) {this.birthday = birthday;}
 
     public String toString() {
-        return "MonedaVO { nombre = " + this.firstName + ", apellidos = " + this.lastName +
+        return "PersonVO { nombre = " + this.firstName + ", apellidos = " + this.lastName +
                 ", dirección = " + this.street + ", código postal = " + this.postalCode +
-                ", ciudad = " + this.city + ", birthday = " + this.birthday + "}";
+                ", ciudad = " + this.city + ", birthday = " + this.birthday + "}\n";
     }
 }
