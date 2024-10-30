@@ -7,11 +7,11 @@ import com.example.tema2.vista.Person;
 import java.util.ArrayList;
 
 public class AgendaModelo {
-    PersonRepository personRepository;
+    static PersonRepository personRepository;
     public void setPersonRepository(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
-    public ArrayList<PersonVO> obtenerPersonas() throws ExceptionPerson {
+    public static ArrayList<PersonVO> obtenerPersonas() throws ExceptionPerson {
         ArrayList<PersonVO> listaPersonas=personRepository.ObtenerListaPersonas();
         return listaPersonas;
     }

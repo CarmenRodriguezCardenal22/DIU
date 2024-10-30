@@ -61,7 +61,6 @@ public class PersonOverviewController {
     }
     private void showPersonDetails(Person person) {
         if (person != null) {
-            //codigo.setText(String.valueOf(person.getCod()));
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
@@ -69,7 +68,6 @@ public class PersonOverviewController {
             cityLabel.setText(person.getCity());
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
-            //codigo.setText("");
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             streetLabel.setText("");
@@ -82,8 +80,9 @@ public class PersonOverviewController {
     private void handleDeletePerson() throws ExceptionPerson {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            Integer codigo=personTable.getItems().get(selectedIndex).getCod();
             personTable.getItems().remove(selectedIndex);
-            agendaModelo.deletePersonas(selectedIndex);
+            agendaModelo.deletePersonas(codigo);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");

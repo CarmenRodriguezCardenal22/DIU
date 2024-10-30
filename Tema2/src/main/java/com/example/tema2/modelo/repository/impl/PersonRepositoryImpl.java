@@ -3,6 +3,7 @@ package com.example.tema2.modelo.repository.impl;
 import com.example.tema2.modelo.ExceptionPerson;
 import com.example.tema2.modelo.PersonVO;
 import com.example.tema2.modelo.repository.PersonRepository;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +18,9 @@ public class PersonRepositoryImpl implements PersonRepository {
     private String sentencia;
     private ArrayList<PersonVO> personas;
     private PersonVO persona;
+    Integer codigo;
+    String nombre, apellidos, direccion, codigoPostal, ciudad;
+    LocalDate fechaNacimiento;
 
     public PersonRepositoryImpl() {
     }
@@ -33,13 +37,13 @@ public class PersonRepositoryImpl implements PersonRepository {
             ResultSet rs = this.stmt.executeQuery(this.sentencia);
 
             while (rs.next()) {
-                Integer codigo = rs.getInt("Código");
-                String nombre = rs.getString("Nombre");
-                String apellidos = rs.getString("Apellidos");
-                String direccion = rs.getString("Dirección");
-                String codigoPostal = rs.getString("Código Postal");
-                String ciudad = rs.getString("Ciudad");
-                LocalDate fechaNacimiento = rs.getDate("Fecha de Nacimiento").toLocalDate();
+                Integer codigo = rs.getInt("codigo");
+                String nombre = rs.getString("nombre");
+                String apellidos = rs.getString("apellidos");
+                String direccion = rs.getString("direccion");
+                String codigoPostal = rs.getString("codigoPostal");
+                String ciudad = rs.getString("ciudad");
+                LocalDate fechaNacimiento = rs.getDate("fechaNacimiento").toLocalDate();
                 PersonVO persona = new PersonVO(codigo, nombre, apellidos, direccion, codigoPostal, ciudad, fechaNacimiento);
                 persona.setCod(codigo);
                 this.personas.add(persona);
@@ -47,6 +51,12 @@ public class PersonRepositoryImpl implements PersonRepository {
             this.conexion.desconectarBD(conn);
             return this.personas;
         } catch (SQLException var6) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Base de datos desactivada.");
+            alert.setContentText("No se ha podido encontrar la base de datos.");
+
+            alert.showAndWait();
             throw new ExceptionPerson("No se ha podido realizar la operación");
         }
     }
@@ -70,7 +80,7 @@ public class PersonRepositoryImpl implements PersonRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM personas WHERE Código = %d", idPerson);
+            String sql = String.format("DELETE FROM personas WHERE codigo = %s", lastId());
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
@@ -83,7 +93,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE personas SET Código= '%s', Nombre = '%s', Apellidos = '%s', Dirección = '%s', Código Postal = '%s', Ciudad = '%s', Fecha de Nacimiento = '%s' WHERE Código = %s", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(),personVO.getPostalCode(), personVO.getCity(), personVO.getBirthday());
+            String sql = String.format("UPDATE personas SET nombre = '%s', apellidos = '%s', direccion = '%s', codigoPostal = '%s', ciudad = '%s', fechaNacimiento = '%s' WHERE codigo = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(),personVO.getPostalCode(), personVO.getCity(), personVO.getBirthday(),lastId());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
             System.out.println(var4.getMessage());

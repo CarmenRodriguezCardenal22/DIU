@@ -1,13 +1,26 @@
 package com.example.tema2.controller;
 
+import com.example.tema2.modelo.AgendaModelo;
+import com.example.tema2.modelo.ExceptionPerson;
+import com.example.tema2.modelo.PersonVO;
+import com.example.tema2.modelo.utilidad.PersonUtil;
+import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.example.tema2.vista.Person;
 import com.example.tema2.modelo.utilidad.DateUtil;
 
+import java.util.ArrayList;
+
 public class PersonEditDialogController {
+    AgendaModelo agendaModelo;
+
+    public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+    }
     @FXML
     private TextField firstNameField;
     @FXML
@@ -20,6 +33,8 @@ public class PersonEditDialogController {
     private TextField cityField;
     @FXML
     private TextField birthdayField;
+    @FXML
+    private ProgressBar progressBar;
 
 
     private Stage dialogStage;
@@ -27,9 +42,18 @@ public class PersonEditDialogController {
     private boolean okClicked = false;
 
     @FXML
-    private void initialize() {
+    private void initialize() throws ExceptionPerson {
+        ArrayList<PersonVO> personas=AgendaModelo.obtenerPersonas();
+        cambiarBarra(personas.size());
     }
-
+    private double cambiarBarra(int n){
+        double progreso = ((double) n/50.0);
+        //progressBar.setProgress(progreso);
+        return progreso;
+    }
+    //crear metodo property
+    //unir con bindDirecctional la barra y el porcentaje
+    public IntegerProperty numProperty(){this.cambiarBarra()}
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
@@ -117,4 +141,5 @@ public class PersonEditDialogController {
             return false;
         }
     }
+
 }
