@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonEditDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonOverviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonOverviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/ConexionJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/ConexionJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/controller/PersonOverviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/controller/PersonOverviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/ConexionJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/ConexionJDBC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.class" afterDir="false" />
-    </list>
+    <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +96,7 @@
       <workItem from="1730103659853" duration="18000" />
       <workItem from="1730190205053" duration="6553000" />
       <workItem from="1730280459342" duration="4830000" />
-      <workItem from="1730287065562" duration="1041000" />
+      <workItem from="1730287065562" duration="1703000" />
     </task>
     <servers />
   </component>
