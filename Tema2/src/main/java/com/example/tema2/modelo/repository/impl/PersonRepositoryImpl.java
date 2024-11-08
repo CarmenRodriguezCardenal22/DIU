@@ -51,12 +51,6 @@ public class PersonRepositoryImpl implements PersonRepository {
             this.conexion.desconectarBD(conn);
             return this.personas;
         } catch (SQLException var6) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Base de datos desactivada.");
-            alert.setContentText("No se ha podido encontrar la base de datos.");
-
-            alert.showAndWait();
             throw new ExceptionPerson("No se ha podido realizar la operación");
         }
     }

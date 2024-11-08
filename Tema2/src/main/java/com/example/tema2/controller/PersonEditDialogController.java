@@ -4,10 +4,14 @@ import com.example.tema2.modelo.AgendaModelo;
 import com.example.tema2.modelo.ExceptionPerson;
 import com.example.tema2.modelo.PersonVO;
 import com.example.tema2.modelo.utilidad.PersonUtil;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.example.tema2.vista.Person;
@@ -17,6 +21,10 @@ import java.util.ArrayList;
 
 public class PersonEditDialogController {
     AgendaModelo agendaModelo;
+    private DoubleProperty progreso = new SimpleDoubleProperty();
+
+    public PersonEditDialogController() {
+    }
 
     public void setAgendaModelo(AgendaModelo agendaModelo) {
         this.agendaModelo = agendaModelo;
@@ -35,6 +43,8 @@ public class PersonEditDialogController {
     private TextField birthdayField;
     @FXML
     private ProgressBar progressBar;
+    @FXML
+    private ProgressIndicator progressIndicator;
 
 
     private Stage dialogStage;
@@ -43,17 +53,20 @@ public class PersonEditDialogController {
 
     @FXML
     private void initialize() throws ExceptionPerson {
-        ArrayList<PersonVO> personas=AgendaModelo.obtenerPersonas();
+        ArrayList<PersonVO> personas = AgendaModelo.obtenerPersonas();
         cambiarBarra(personas.size());
+        progressBar.progressProperty().bindBidirectional(progreso);
+        progressIndicator.progressProperty().bindBidirectional(progreso);
     }
-    private double cambiarBarra(int n){
-        double progreso = ((double) n/50.0);
-        //progressBar.setProgress(progreso);
-        return progreso;
+
+    private void cambiarBarra(int n) {
+        progreso.set(n / 50.0);
     }
-    //crear metodo property
-    //unir con bindDirecctional la barra y el porcentaje
-    public IntegerProperty numProperty(){this.cambiarBarra()}
+
+    public IntegerProperty numProperty() {
+        return new SimpleIntegerProperty((int) (progreso.get() * 50));
+    }
+
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }

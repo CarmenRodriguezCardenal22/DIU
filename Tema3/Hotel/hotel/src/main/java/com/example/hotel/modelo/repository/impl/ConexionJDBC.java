@@ -1,7 +1,6 @@
-package com.example.tema2.modelo.repository.impl;
+package com.example.hotel.modelo.repository.impl;
 
 import javafx.scene.control.Alert;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +11,7 @@ public class ConexionJDBC {
 
     public Connection conectarBD() throws SQLException {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/agenda?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/hotel?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
             Class.forName("com.mysql.cj.jdbc.Driver");
             return conn;
         } catch (Exception var2) {
@@ -34,7 +33,7 @@ public class ConexionJDBC {
             SQLException ex = var3;
             System.out.println("\n--- SQLException capturada ---\n");
 
-            while(ex != null) {
+            while (ex != null) {
                 System.out.println("Mensaje:   " + ex.getMessage());
                 System.out.println("SQLState:  " + ex.getSQLState());
                 System.out.println("ErrorCode: " + ex.getErrorCode());

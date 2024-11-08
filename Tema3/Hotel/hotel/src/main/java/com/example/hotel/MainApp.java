@@ -1,13 +1,8 @@
-package com.example.tema2;
+package com.example.hotel;
 
-import java.io.IOException;
-
-import com.example.tema2.controller.BirthdayStatiticsController;
-import com.example.tema2.controller.PersonEditDialogController;
-import com.example.tema2.controller.PersonOverviewController;
-import com.example.tema2.modelo.AgendaModelo;
-import com.example.tema2.modelo.repository.impl.PersonRepositoryImpl;
-import com.example.tema2.vista.Person;
+import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
+import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,27 +11,27 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainApp extends Application {
+import java.io.IOException;
 
+public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
-    AgendaModelo agendaModelo = new AgendaModelo();
+    HotelModelo hotelModelo = new HotelModelo();
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Agenda");
+        this.primaryStage.setTitle("Hotel ");
 
-        initRootLayout();
-        showPersonOverview();
+        //initRootLayout();
+        //showPersonOverview();
 
-        this.primaryStage.getIcons().add(new Image("file:resources/images/icono32.png"));
+        //this.primaryStage.getIcons().add(new Image("file:resources/images/icono32.png"));
         //Image imagen = new Image("file:resources/imagenes/icono32.png", 50, 50, true, true);
     }
-    public void initRootLayout() {
+    /*public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
@@ -51,15 +46,18 @@ public class MainApp extends Application {
     }
     public Stage getPrimaryStage() {
         return primaryStage;
-    }
-    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    }*/
+    //private ObservableList<Person> personData = FXCollections.observableArrayList();
 
     public MainApp() {
         try{
-            PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
-            agendaModelo.setPersonRepository(personRepository);
-            //System.out.println(agendaModelo.obtenerPersonas());
-            personData.addAll(agendaModelo.mostrarPersonas());
+            ClienteRepositoryImpl clienteRepository = new ClienteRepositoryImpl();
+            ReservaRepositoryImpl reservaRepository = new ReservaRepositoryImpl();
+            hotelModelo.setClienteRepository(clienteRepository);
+            hotelModelo.setReservaRepository(reservaRepository);
+            System.out.println(hotelModelo.obtenerClientes());
+            System.out.println(hotelModelo.obtenerReservas());
+            //personData.addAll(agendaModelo.mostrarPersonas());
 
         }
         catch(Exception e){
@@ -67,13 +65,13 @@ public class MainApp extends Application {
         }
     }
 
-    public ObservableList<Person> getPersonData() {
+    /*public ObservableList<Person> getPersonData() {
         return personData;
-    }
+    }*/
     public static void main(String[] args) {
         launch(args);
     }
-    public void showPersonOverview() {
+    /*public void showPersonOverview() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("PersonOverview.fxml"));
@@ -88,8 +86,8 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    public boolean showPersonEditDialog(Person person) {
+    }*/
+    /*public boolean showPersonEditDialog(Person person) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
@@ -116,8 +114,8 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
-    }
-    public void showBirthdayStatistics() {
+    }*/
+    /*public void showBirthdayStatistics() {
         try {
             // Load the fxml file and create a new stage for the popup.
             FXMLLoader loader = new FXMLLoader();
@@ -139,5 +137,5 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

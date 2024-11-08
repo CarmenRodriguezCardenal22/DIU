@@ -31,6 +31,4 @@ public class AgendaModelo {
         PersonVO personVO=PersonUtil.pasarPersonVO(person);
         personRepository.editPerson(personVO);
     }
-    //modelo llama a metodos add,delete,update del repositoryImpl
-    //PersonOverview llama desde cada metodo a los metodos del modelo
 }
