@@ -5,27 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/MainApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/ClienteVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/ExcepcionHotel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/HotelModelo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/ReservaVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/repository/ClienteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/repository/ReservaRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/vista/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/vista/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClientesOverview.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservasOverview.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/controller/PersonEditDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/ConexionJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/ConexionJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/controller/PersonEditDialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/controller/PersonEditDialogController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/ConexionJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/ConexionJDBC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/modelo/repository/impl/PersonRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonOverview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +107,8 @@
       <workItem from="1730887453883" duration="138000" />
       <workItem from="1730887621993" duration="52000" />
       <workItem from="1731063541082" duration="6731000" />
+      <workItem from="1731313396646" duration="8000" />
+      <workItem from="1731400663356" duration="1814000" />
     </task>
     <servers />
   </component>
