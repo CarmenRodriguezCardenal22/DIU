@@ -1,8 +1,10 @@
 package com.example.hotel;
 
+import com.example.hotel.controller.ClienteEditDialogController;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
 import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
+import com.example.hotel.vista.Cliente;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,7 +49,7 @@ public class MainApp extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }*/
-    //private ObservableList<Person> personData = FXCollections.observableArrayList();
+
 
     public MainApp() {
         try{
@@ -65,9 +67,10 @@ public class MainApp extends Application {
         }
     }
 
-    /*public ObservableList<Person> getPersonData() {
-        return personData;
-    }*/
+    private ObservableList<Cliente> clienteData = FXCollections.observableArrayList();
+    public ObservableList<Cliente> getClienteData() {
+        return clienteData;
+    }
     public static void main(String[] args) {
         launch(args);
     }
@@ -87,25 +90,25 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }*/
-    /*public boolean showPersonEditDialog(Person person) {
+    public boolean showClienteEditDialog(Cliente cliente) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("PersonEditDialog.fxml"));
+            loader.setLocation(MainApp.class.getResource("ClienteEditDialog.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Person");
+            dialogStage.setTitle("Edit Cliente");
             //dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
-            // Set the person into the controller.
-            PersonEditDialogController controller = loader.getController();
+            // Set the cliente into the controller.
+            ClienteEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setPerson(person);
+            controller.setCliente(cliente);
 
             dialogStage.showAndWait();
 
@@ -114,28 +117,28 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
-    }*/
-    /*public void showBirthdayStatistics() {
+    }
+    public void showBirthdayStatistics() {
         try {
             // Load the fxml file and create a new stage for the popup.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("BirthdayStatistics.fxml"));
+            loader.setLocation(MainApp.class.getResource("OcupationStatistics.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Birthday Statistics");
+            dialogStage.setTitle("Estatidisticas de ocupacion");
             //dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
 
             // Set the persons into the controller.
-            BirthdayStatiticsController controller = loader.getController();
-            controller.setPersonData(personData);
+           /* OcupationStatiticsController controller = loader.getController();
+            controller.setPersonData(personData);*/
 
             dialogStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

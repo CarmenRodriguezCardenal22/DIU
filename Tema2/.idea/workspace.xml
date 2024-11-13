@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClientesOverview.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservasOverview.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ClienteEditDialogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ClienteOverviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/OcupationStaticsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ReservaEditDialogController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ReservasOverviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/RootLayoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/repository/impl/TipoHabitacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/utilidad/ClienteUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/utilidad/ReservaUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClienteEditDialog.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/OcupationStatistics.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/RootLayout.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tema2/PersonOverview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/tema2/PersonOverview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/HotelModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/modelo/HotelModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClientesOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClientesOverview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservasOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservaEditDialog.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +121,8 @@
       <workItem from="1730887621993" duration="52000" />
       <workItem from="1731063541082" duration="6731000" />
       <workItem from="1731313396646" duration="8000" />
-      <workItem from="1731400663356" duration="1814000" />
+      <workItem from="1731400663356" duration="1815000" />
+      <workItem from="1731490015206" duration="6024000" />
     </task>
     <servers />
   </component>
