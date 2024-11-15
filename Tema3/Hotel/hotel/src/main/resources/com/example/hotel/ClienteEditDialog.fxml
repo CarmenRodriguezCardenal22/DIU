@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.ClenteEditDialog">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClenteEditDialog">
    <children>
       <GridPane layoutX="14.0" prefHeight="325.0" prefWidth="600.0">
         <columnConstraints>
@@ -39,8 +38,8 @@
       </GridPane>
       <HBox layoutX="371.0" layoutY="344.0" prefHeight="29.0" prefWidth="147.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
          <children>
-            <Button fx:id="aceptar" mnemonicParsing="false" text="Aceptar" />
-            <Button fx:id="cancelar" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="aceptar" mnemonicParsing="false" onAction="#handleOk" text="Aceptar" />
+            <Button fx:id="cancelar" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />
          </children>
       </HBox>
    </children>

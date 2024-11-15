@@ -7,6 +7,6 @@ public class RootLayoutController {
     private MainApp mainApp=new MainApp();
     @FXML
     private void handleShowBirthdayStatistics() {
-        mainApp.showBirthdayStatistics();
+        //mainApp.showBirthdayStatistics();
     }
 }

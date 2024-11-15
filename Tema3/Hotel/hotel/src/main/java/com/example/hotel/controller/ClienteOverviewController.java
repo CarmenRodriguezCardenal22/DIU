@@ -5,10 +5,7 @@ import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.vista.Cliente;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 public class ClienteOverviewController {
     HotelModelo hotelModelo;
@@ -37,6 +34,9 @@ public class ClienteOverviewController {
     @FXML
     private Label provincia;
 
+    @FXML
+    private Button nuevo, editar, borrar, consultar;
+
     private MainApp mainApp=new MainApp();
 
     public ClienteOverviewController() {
@@ -47,10 +47,10 @@ public class ClienteOverviewController {
         // Initialize the person table with the two columns.
         nombreColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         apellidosColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        showPersonDetails(null);
+        showClienteDetails(null);
 
         tabla.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showPersonDetails(newValue));
+                (observable, oldValue, newValue) -> showClienteDetails(newValue));
     }
 
     public void setMainApp(MainApp mainApp) {
@@ -58,7 +58,7 @@ public class ClienteOverviewController {
 
         tabla.setItems(mainApp.getClienteData());
     }
-    private void showPersonDetails(Cliente cliente) {
+    private void showClienteDetails(Cliente cliente) {
         if (cliente != null) {
             id.setText(cliente.getDni());
             nombre.setText(cliente.getFirstName());
@@ -107,7 +107,7 @@ public class ClienteOverviewController {
         if (selectedCliente != null) {
             boolean okClicked = mainApp.showClienteEditDialog(selectedCliente);
             if (okClicked) {
-                showPersonDetails(selectedCliente);
+                showClienteDetails(selectedCliente);
                 hotelModelo.editCliente(selectedCliente);
             }
 
@@ -120,4 +120,7 @@ public class ClienteOverviewController {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    private void handleConsultarReservas() throws ExcepcionHotel {}
 }

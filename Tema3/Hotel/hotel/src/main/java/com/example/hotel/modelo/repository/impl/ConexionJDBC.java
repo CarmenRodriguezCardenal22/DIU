@@ -10,21 +10,34 @@ public class ConexionJDBC {
     }
 
     public Connection conectarBD() throws SQLException {
+        Connection conn = null;
+
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/hotel?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return conn;
-        } catch (Exception var2) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("ERROR");
-            alert.setHeaderText("Base de datos desactivada.");
-            alert.setContentText("No se ha podido encontrar la base de datos.");
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/hotel?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "root",
+                    "");
 
+        } catch (ClassNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de Conexión");
+            alert.setHeaderText("Base de Datos no encontrada");
+            alert.setContentText("Asegúrate de tener el conector de MySQL en tu proyecto.");
             alert.showAndWait();
+            throw new SQLException("Driver no encontrado", e);
 
-            throw new SQLException();
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error de Conexión");
+            alert.setHeaderText("No se pudo conectar a la base de datos");
+            alert.setContentText("Por favor verifica que el servidor esté activo y accesible.");
+            alert.showAndWait();
+            throw e;
         }
+        return conn;
     }
+
 
     public void desconectarBD(Connection conn) {
         try {

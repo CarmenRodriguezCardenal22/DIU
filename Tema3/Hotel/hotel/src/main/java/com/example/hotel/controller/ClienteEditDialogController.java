@@ -1,80 +1,77 @@
 package com.example.hotel.controller;
 
+import com.example.hotel.modelo.ClienteVO;
+import com.example.hotel.modelo.ExcepcionHotel;
+import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.vista.Cliente;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 public class ClienteEditDialogController {
-    AgendaModelo agendaModelo;
+    HotelModelo hotelModelo;
     private DoubleProperty progreso = new SimpleDoubleProperty();
 
-    public PersonEditDialogController() {
+    public ClienteEditDialogController() {
     }
 
-    public void setAgendaModelo(AgendaModelo agendaModelo) {
-        this.agendaModelo = agendaModelo;
+    public void setHotelModelo(HotelModelo hotelModelo) {
+        this.hotelModelo = hotelModelo;
     }
     @FXML
-    private TextField firstNameField;
+    private TextField dni;
     @FXML
-    private TextField lastNameField;
+    private TextField nombre;
     @FXML
-    private TextField streetField;
+    private TextField apellidos;
     @FXML
-    private TextField postalCodeField;
+    private TextField direccion;
     @FXML
-    private TextField cityField;
+    private TextField ciudad;
     @FXML
-    private TextField birthdayField;
-    @FXML
-    private ProgressBar progressBar;
-    @FXML
-    private ProgressIndicator progressIndicator;
+    private TextField provincia;
 
 
     private Stage dialogStage;
-    private Person person;
+    private Cliente cliente;
     private boolean okClicked = false;
 
     @FXML
-    private void initialize() throws ExceptionPerson {
-        ArrayList<PersonVO> personas = AgendaModelo.obtenerPersonas();
-        cambiarBarra(personas.size());
+    private void initialize() throws ExcepcionHotel {
+        ArrayList<ClienteVO> clientes = HotelModelo.obtenerClientes();
+        /*cambiarBarra(clientes.size());
         progressBar.progressProperty().bindBidirectional(progreso);
-        progressIndicator.progressProperty().bindBidirectional(progreso);
+        progressIndicator.progressProperty().bindBidirectional(progreso);*/
     }
 
-    private void cambiarBarra(int n) {
+    /*private void cambiarBarra(int n) {
         progreso.set(n / 50.0);
     }
 
     public IntegerProperty numProperty() {
         return new SimpleIntegerProperty((int) (progreso.get() * 50));
-    }
+    }*/
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
 
-        firstNameField.setText(person.getFirstName());
-        lastNameField.setText(person.getLastName());
-        streetField.setText(person.getStreet());
-        postalCodeField.setText(person.getPostalCode());
-        cityField.setText(person.getCity());
-        birthdayField.setText(DateUtil.format(person.getBirthday()));
-        birthdayField.setPromptText("dd.mm.yyyy");
+        dni.setText(cliente.getDni());
+        nombre.setText(cliente.getFirstName());
+        apellidos.setText(cliente.getLastName());
+        direccion.setText(cliente.getStreet());
+        ciudad.setText(cliente.getCity());
+        provincia.setText(cliente.getProvincia());
     }
 
     public boolean isOkClicked() {
@@ -84,12 +81,12 @@ public class ClienteEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
-            person.setStreet(streetField.getText());
-            person.setPostalCode(postalCodeField.getText());
-            person.setCity(cityField.getText());
-            person.setBirthday(DateUtil.parse(birthdayField.getText()));
+            cliente.setDni(dni.getText());
+            cliente.setFirstName(nombre.getText());
+            cliente.setLastName(apellidos.getText());
+            cliente.setStreet(direccion.getText());
+            cliente.setCity(ciudad.getText());
+            cliente.setProvincia(provincia.getText());
 
             okClicked = true;
             dialogStage.close();
@@ -104,36 +101,23 @@ public class ClienteEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+        if (dni.getText() == null || dni.getText().length() == 0) {
+            errorMessage += "No valid dni!\n";
+        }
+        if (nombre.getText() == null || nombre.getText().length() == 0) {
             errorMessage += "No valid first name!\n";
         }
-        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+        if (apellidos.getText() == null || apellidos.getText().length() == 0) {
             errorMessage += "No valid last name!\n";
         }
-        if (streetField.getText() == null || streetField.getText().length() == 0) {
+        if (direccion.getText() == null || direccion.getText().length() == 0) {
             errorMessage += "No valid street!\n";
         }
-
-        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
-            errorMessage += "No valid postal code!\n";
-        } else {
-            try {
-                Integer.parseInt(postalCodeField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n";
-            }
-        }
-
-        if (cityField.getText() == null || cityField.getText().length() == 0) {
+        if (ciudad.getText() == null || ciudad.getText().length() == 0) {
             errorMessage += "No valid city!\n";
         }
-
-        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
-            errorMessage += "No valid birthday!\n";
-        } else {
-            if (!DateUtil.validDate(birthdayField.getText())) {
-                errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
-            }
+        if (provincia.getText() == null || provincia.getText().length() == 0) {
+            errorMessage += "No valid provincia!\n";
         }
 
         if (errorMessage.length() == 0) {
@@ -149,12 +133,3 @@ public class ClienteEditDialogController {
         }
     }
 }
-/*para cliente hecho:
-cliente util
-metodos del modelo
-ClienteOverviewController
-medoto del main showClienteEditDialog
-
-terminar esta clase y empezar reserva
-
-hacer rootLayout*/

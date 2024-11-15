@@ -3,7 +3,9 @@ package com.example.hotel.modelo;
 import com.example.hotel.modelo.repository.ClienteRepository;
 import com.example.hotel.modelo.repository.ReservaRepository;
 import com.example.hotel.modelo.utilidad.ClienteUtil;
+import com.example.hotel.modelo.utilidad.ReservaUtil;
 import com.example.hotel.vista.Cliente;
+import com.example.hotel.vista.Reserva;
 
 import java.util.ArrayList;
 
@@ -20,13 +22,23 @@ public class HotelModelo {
         ArrayList<ClienteVO> listaClientes=clienteRepository.ObtenerListaCliente();
         return listaClientes;
     }
+    public ArrayList<Cliente> mostrarClientes() throws ExcepcionHotel {
+        ArrayList<ClienteVO> listaVO=obtenerClientes();
+        ArrayList<Cliente> lista= ClienteUtil.pasarClienteLista(listaVO);
+        return lista;
+    }
     public static ArrayList<ReservaVO> obtenerReservas() throws ExcepcionHotel {
         ArrayList<ReservaVO> listaReservas=reservaRepository.ObtenerListaReserva();
         return listaReservas;
     }
+    public ArrayList<Reserva> mostrarReserva() throws ExcepcionHotel {
+        ArrayList<ReservaVO> listaVO=obtenerReservas();
+        ArrayList<Reserva> lista= ReservaUtil.pasarReservaLista(listaVO);
+        return lista;
+    }
     public void addCliente(Cliente cliente) throws ExcepcionHotel {
-        ClienteVO personVO= ClienteUtil.pasarClienteVO(cliente);
-        clienteRepository.addCliente(personVO);
+        ClienteVO clienteVO= ClienteUtil.pasarClienteVO(cliente);
+        clienteRepository.addCliente(clienteVO);
     }
     public void deleteCliente(String dni) throws ExcepcionHotel {
         clienteRepository.deleteCliente(dni);
@@ -34,5 +46,16 @@ public class HotelModelo {
     public void editCliente(Cliente person) throws ExcepcionHotel {
         ClienteVO personVO=ClienteUtil.pasarClienteVO(person);
         clienteRepository.editCliente(personVO);
+    }
+    public void addReserva(Reserva reserva) throws ExcepcionHotel {
+        ReservaVO reservaVO= ReservaUtil.pasarReservaVO(reserva);
+        reservaRepository.addReserva(reservaVO);
+    }
+    public void deleteReserva(Integer id) throws ExcepcionHotel {
+        reservaRepository.deleteReserva(id);
+    }
+    public void editReserva(Reserva reserva) throws ExcepcionHotel {
+        ReservaVO reservaVO= ReservaUtil.pasarReservaVO(reserva);
+        reservaRepository.editReserva(reservaVO);
     }
 }

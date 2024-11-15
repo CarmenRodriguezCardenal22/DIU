@@ -47,17 +47,20 @@
                         <CheckBox fx:id="fumador" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <DatePicker fx:id="llegada" GridPane.columnIndex="1" />
                         <DatePicker fx:id="salida" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <VBox fx:id="regimen" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <children>
-                              <RadioButton fx:id="desayuno" mnemonicParsing="false" text="Alojamiento y desayuno" />
-                              <RadioButton fx:id="pMedia" mnemonicParsing="false" text="Media Pension" />
-                              <RadioButton fx:id="pCompleta" mnemonicParsing="false" text="Pension Completa" />
+                              <RadioButton fx:id="desayuno" mnemonicParsing="false" text="Alojamiento y desayuno">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="elegir" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton fx:id="pMedia" mnemonicParsing="false" text="Media Pension" toggleGroup="$elegir" />
+                              <RadioButton fx:id="pCompleta" mnemonicParsing="false" text="Pension Completa" toggleGroup="$elegir" />
                            </children>
                         </VBox>
-                        <Spinner fx:id="spinner" initialValue="3" max="100" min="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Spinner fx:id="numHabit" initialValue="3" max="100" min="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <editable>true</editable>
                         </Spinner>
-                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ChoiceBox fx:id="tipo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             </children>
                         </GridPane>
                         <HBox layoutX="197.0" layoutY="352.0" prefHeight="32.0" prefWidth="143.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
