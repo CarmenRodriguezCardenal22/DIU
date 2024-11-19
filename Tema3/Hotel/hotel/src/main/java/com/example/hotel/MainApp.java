@@ -3,6 +3,7 @@ package com.example.hotel;
 import com.example.hotel.controller.ClienteEditDialogController;
 import com.example.hotel.controller.ClienteOverviewController;
 import com.example.hotel.controller.ReservaEditDialogController;
+import com.example.hotel.controller.ReservasOverviewController;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
 import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
@@ -43,16 +44,16 @@ public class MainApp extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
-            rootLayout = loader.load();
+            rootLayout = (BorderPane) loader.load();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("FXML Loader Error: " + e.getMessage());
         }
     }
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -93,6 +94,22 @@ public class MainApp extends Application {
             rootLayout.setCenter(personOverview);
 
             ClienteOverviewController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setHotelModelo(hotelModelo);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void showReservasOverview() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("ReservaOverview.fxml"));
+            AnchorPane personOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(personOverview);
+
+            ReservasOverviewController controller = loader.getController();
             controller.setMainApp(this);
             controller.setHotelModelo(hotelModelo);
 
@@ -153,7 +170,7 @@ public class MainApp extends Application {
         }
     }
 
-    /*public void showBirthdayStatistics() {
+    public void showOcupationStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("OcupationStatistics.fxml"));
@@ -174,5 +191,5 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

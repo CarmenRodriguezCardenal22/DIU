@@ -14,4 +14,7 @@ module com.example.hotel {
 
     opens com.example.hotel to javafx.fxml;
     exports com.example.hotel;
+    opens com.example.hotel.controller to javafx.fxml;
+    exports com.example.hotel.controller;
+
 }

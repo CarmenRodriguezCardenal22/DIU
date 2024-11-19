@@ -10,6 +10,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -26,17 +27,17 @@ public class ClienteEditDialogController {
         this.hotelModelo = hotelModelo;
     }
     @FXML
-    private TextField dni;
+    private Label dni;
     @FXML
-    private TextField nombre;
+    private Label nombre;
     @FXML
-    private TextField apellidos;
+    private Label apellidos;
     @FXML
-    private TextField direccion;
+    private Label direccion;
     @FXML
-    private TextField ciudad;
+    private Label ciudad;
     @FXML
-    private TextField provincia;
+    private Label provincia;
 
 
     private Stage dialogStage;

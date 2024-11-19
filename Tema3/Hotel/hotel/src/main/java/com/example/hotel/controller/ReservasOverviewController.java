@@ -5,10 +5,7 @@ import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.vista.Reserva;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 public class ReservasOverviewController {
     HotelModelo hotelModelo;
@@ -38,6 +35,8 @@ public class ReservasOverviewController {
     private Label fumador;
     @FXML
     private Label regimen;
+    @FXML
+    private Button nuevo, editar, borrar;
 
     private MainApp mainApp=new MainApp();
 

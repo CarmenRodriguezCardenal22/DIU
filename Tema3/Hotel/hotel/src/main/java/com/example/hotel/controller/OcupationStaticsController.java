@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class OcupationStaticsController {
-    @FXML
+    /*@FXML
     private BarChart<String, Integer> barChart;
 
     @FXML
@@ -27,7 +27,7 @@ public class OcupationStaticsController {
         monthNames.addAll(Arrays.asList(months));
 
         xAxis.setCategories(monthNames);
-    }
+    }*/
 
     /*public void setPersonData(List<Person> persons) {
         // Count the number of people having their birthday in a specific month.

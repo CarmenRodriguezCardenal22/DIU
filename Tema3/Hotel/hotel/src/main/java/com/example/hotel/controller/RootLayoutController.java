@@ -4,9 +4,11 @@ import com.example.hotel.MainApp;
 import javafx.fxml.FXML;
 
 public class RootLayoutController {
-    private MainApp mainApp=new MainApp();
+    private MainApp mainApp;
     @FXML
-    private void handleShowBirthdayStatistics() {
-        //mainApp.showBirthdayStatistics();
+    private void handleOcupationStatistics() {
+        mainApp.showOcupationStatistics();
+    }
+    public RootLayoutController(){
     }
 }
