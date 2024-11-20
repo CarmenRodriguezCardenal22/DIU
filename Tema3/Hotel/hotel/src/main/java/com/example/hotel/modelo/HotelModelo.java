@@ -27,15 +27,17 @@ public class HotelModelo {
         ArrayList<Cliente> lista= ClienteUtil.pasarClienteLista(listaVO);
         return lista;
     }
-    public static ArrayList<ReservaVO> obtenerReservas() throws ExcepcionHotel {
-        ArrayList<ReservaVO> listaReservas=reservaRepository.ObtenerListaReserva();
-        return listaReservas;
+    public static ArrayList<ReservaVO> obtenerReservas(String dni) throws ExcepcionHotel {
+        if (dni == null || dni.trim().isEmpty()) {
+            throw new ExcepcionHotel("El DNI no puede estar vacío.");
+        }
+        return reservaRepository.ObtenerListaReserva(dni);
     }
-    public ArrayList<Reserva> mostrarReserva() throws ExcepcionHotel {
+    /*public ArrayList<Reserva> mostrarReserva() throws ExcepcionHotel {
         ArrayList<ReservaVO> listaVO=obtenerReservas();
         ArrayList<Reserva> lista= ReservaUtil.pasarReservaLista(listaVO);
         return lista;
-    }
+    }*/
     public void addCliente(Cliente cliente) throws ExcepcionHotel {
         ClienteVO clienteVO= ClienteUtil.pasarClienteVO(cliente);
         clienteRepository.addCliente(clienteVO);
@@ -43,9 +45,9 @@ public class HotelModelo {
     public void deleteCliente(String dni) throws ExcepcionHotel {
         clienteRepository.deleteCliente(dni);
     }
-    public void editCliente(Cliente person) throws ExcepcionHotel {
-        ClienteVO personVO=ClienteUtil.pasarClienteVO(person);
-        clienteRepository.editCliente(personVO);
+    public void editCliente(Cliente cliente) throws ExcepcionHotel {
+        ClienteVO clienteVO=ClienteUtil.pasarClienteVO(cliente);
+        clienteRepository.editCliente(clienteVO);
     }
     public void addReserva(Reserva reserva) throws ExcepcionHotel {
         ReservaVO reservaVO= ReservaUtil.pasarReservaVO(reserva);

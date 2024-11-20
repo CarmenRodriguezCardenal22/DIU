@@ -68,7 +68,9 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM Clientes WHERE dni = %s", lastDni());
+            String sql = String.format("DELETE FROM Reservas WHERE dniCliente = '%s'", clienteVO.getDni());
+            comando.executeUpdate(sql);
+            sql = String.format("DELETE FROM Clientes WHERE dni = '%s'", clienteVO.getDni());
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
@@ -81,7 +83,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE Clientes SET dni = '%s', nombre = '%s', apellidos = '%s', direccion = '%s', ciudad = '%s', provincia = '%s' WHERE dni = %s", clienteVO.getDni(), clienteVO.getFirstName(), clienteVO.getLastName(), clienteVO.getStreet(), clienteVO.getCity(), clienteVO.getProvincia(),lastDni());
+            String sql = String.format("UPDATE Clientes SET dni = '%s', nombre = '%s', apellidos = '%s', direccion = '%s', ciudad = '%s', provincia = '%s' WHERE dni = '%s'", clienteVO.getDni(), clienteVO.getFirstName(), clienteVO.getLastName(), clienteVO.getStreet(), clienteVO.getCity(), clienteVO.getProvincia(),clienteVO.getDni());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
             System.out.println(var4.getMessage());

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
     <children>
         <SplitPane dividerPositions="0.33612040133779264" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -44,19 +44,19 @@
                                 <Label text="APELLIDOS" GridPane.rowIndex="2" />
                                 <Label text="DIRECCION" GridPane.rowIndex="3" />
                                 <Label text="CIUDAD" GridPane.rowIndex="4" />
-                                <Label fx:id="id" GridPane.columnIndex="1" />
-                                <Label fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label fx:id="apellidos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label fx:id="direccion" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label fx:id="ciudad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                <Label fx:id="provincia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="id" GridPane.columnIndex="1" />
+                        <Label fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="apellidos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="direccion" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="ciudad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="provincia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             </children>
                         </GridPane>
                         <HBox layoutX="197.0" layoutY="352.0" prefHeight="32.0" prefWidth="186.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                             <children>
-                                <Button fx:id="nuevo" mnemonicParsing="false" text="Nuevo" />
-                                <Button fx:id="editar" mnemonicParsing="false" text="Editar" />
-                                <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" text="Borrar" />
+                                <Button fx:id="nuevo" mnemonicParsing="false" onAction="#handleNewCliente" text="Nuevo" />
+                                <Button fx:id="editar" mnemonicParsing="false" onAction="#handleEditCliente" text="Editar" />
+                                <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleDeleteCliente" text="Borrar" />
                             </children>
                         </HBox>
                         <Label layoutX="7.0" prefHeight="55.0" prefWidth="416.0" text="DETALLES DEL CLIENTE">
@@ -64,7 +64,7 @@
                                 <Font size="26.0" />
                             </font>
                         </Label>
-                        <Button fx:id="consultar" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" text="Consultar reservas" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" />
+                        <Button fx:id="consultar" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleConsultarReservas" text="Consultar reservas" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" />
                     </children>
                 </AnchorPane>
             </items>

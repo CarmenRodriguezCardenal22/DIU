@@ -6,6 +6,7 @@ import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.vista.Reserva;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class ReservasOverviewController {
     HotelModelo hotelModelo;
@@ -52,6 +53,15 @@ public class ReservasOverviewController {
 
         tabla.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showReservasDetails(newValue));
+    }
+    private boolean okClicked = false;
+    public boolean isOkClicked() {
+        return okClicked;
+    }
+
+    private Stage dialogStage;
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
     }
 
     public void setMainApp(MainApp mainApp) {

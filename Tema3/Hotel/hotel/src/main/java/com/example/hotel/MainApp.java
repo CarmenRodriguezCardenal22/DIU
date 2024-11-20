@@ -65,8 +65,8 @@ public class MainApp extends Application {
             hotelModelo.setClienteRepository(clienteRepository);
             hotelModelo.setReservaRepository(reservaRepository);
 
-            System.out.println(hotelModelo.obtenerClientes());
-            System.out.println(hotelModelo.obtenerReservas());
+            //System.out.println(hotelModelo.obtenerClientes());
+            //System.out.println(hotelModelo.obtenerReservas());
             clienteData.addAll(hotelModelo.mostrarClientes());
 
         } catch (Exception e) {
@@ -88,7 +88,7 @@ public class MainApp extends Application {
     public void showClienteOverview() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("ClienteOverview.fxml"));
+            loader.setLocation(MainApp.class.getResource("ClientesOverview.fxml"));
             AnchorPane personOverview = (AnchorPane) loader.load();
 
             rootLayout.setCenter(personOverview);
@@ -101,20 +101,25 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    public void showReservasOverview() {
+    public boolean showReservasOverview(Cliente cliente) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("ReservaOverview.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
+            loader.setLocation(MainApp.class.getResource("ReservasOverview.fxml"));
+            AnchorPane reservaOverview = (AnchorPane) loader.load();
 
-            rootLayout.setCenter(personOverview);
+            Stage dialogStage = new Stage();
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(reservaOverview);
+            dialogStage.setScene(scene);
 
             ReservasOverviewController controller = loader.getController();
-            controller.setMainApp(this);
-            controller.setHotelModelo(hotelModelo);
+            controller.setDialogStage(dialogStage);
+            dialogStage.showAndWait();
 
+            return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -125,7 +130,6 @@ public class MainApp extends Application {
             AnchorPane page = loader.load();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Cliente");
             // dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);

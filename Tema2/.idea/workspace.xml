@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ClienteEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ClienteEditDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/OcupationStaticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/OcupationStaticsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ReservaEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ReservaEditDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ReservasOverviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/ReservasOverviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/RootLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/com/example/hotel/controller/RootLayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClienteEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ClienteEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/OcupationStatistics.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/OcupationStatistics.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservaEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservaEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservasOverview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/ReservasOverview.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/RootLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Hotel/hotel/src/main/resources/com/example/hotel/RootLayout.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,6 +110,7 @@
       <workItem from="1731668001930" duration="1943000" />
       <workItem from="1731918820688" duration="6000" />
       <workItem from="1732009326901" duration="1459000" />
+      <workItem from="1732020735068" duration="4000" />
     </task>
     <servers />
   </component>

@@ -122,5 +122,22 @@ public class ClienteOverviewController {
     }
 
     @FXML
-    private void handleConsultarReservas() throws ExcepcionHotel {}
+    private void handleConsultarReservas() throws ExcepcionHotel {
+        Cliente selectedCliente = tabla.getSelectionModel().getSelectedItem();
+        if (selectedCliente != null) {
+            boolean okClicked = mainApp.showReservasOverview(selectedCliente);
+            if (okClicked) {
+                showClienteDetails(selectedCliente);
+                hotelModelo.obtenerReservas(selectedCliente.getDni());
+            }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
+    }
 }

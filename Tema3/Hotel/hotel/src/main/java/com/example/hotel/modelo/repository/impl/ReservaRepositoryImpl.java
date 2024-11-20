@@ -4,10 +4,7 @@ import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.repository.ReservaRepository;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -21,35 +18,39 @@ public class ReservaRepositoryImpl implements ReservaRepository {
     public ReservaRepositoryImpl() {
     }
 
-    public ArrayList<ReservaVO> ObtenerListaReserva() throws ExcepcionHotel {
-        try {
-            Connection conn = this.conexion.conectarBD();
+    public ArrayList<ReservaVO> ObtenerListaReserva(String dniCliente) throws ExcepcionHotel {
+        ArrayList<ReservaVO> reservas = new ArrayList<>();
+        String sql = "SELECT * FROM Reservas WHERE dniCliente = ?";
+
+        try (Connection conn = this.conexion.conectarBD();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             if (conn == null) {
                 throw new ExcepcionHotel("Conexión a la base de datos fallida");
             }
-            this.reserva = new ArrayList();
-            this.stmt = conn.createStatement();
-            this.sentencia = "SELECT * FROM Reservas";
-            ResultSet rs = this.stmt.executeQuery(this.sentencia);
 
-            while (rs.next()) {
-                Integer id = rs.getInt("id");
-                LocalDate fechaLlegada = rs.getDate("fechaLlegada").toLocalDate();
-                LocalDate fechaSalida = rs.getDate("fechaSalida").toLocalDate();
-                Integer numHabitaciones = rs.getInt("numeroHabitaciones");
-                String tipoHabitacion = rs.getString("tipoHabitacion");
-                Boolean fumador = rs.getBoolean("fumador");
-                String regimen = rs.getString("regimenAlojamiento");
-                String dniCliente = rs.getString("dniCliente");
-                this.reservaVO = new ReservaVO(id, fechaLlegada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
-                this.reservaVO.setId(id);
-                this.reserva.add(reservaVO);
+            stmt.setString(1, dniCliente);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Integer id = rs.getInt("id");
+                    LocalDate fechaLlegada = rs.getDate("fechaLlegada").toLocalDate();
+                    LocalDate fechaSalida = rs.getDate("fechaSalida").toLocalDate();
+                    Integer numHabitaciones = rs.getInt("numeroHabitaciones");
+                    String tipoHabitacion = rs.getString("tipoHabitacion");
+                    Boolean fumador = rs.getBoolean("fumador");
+                    String regimen = rs.getString("regimenAlojamiento");
+
+                    ReservaVO reservaVO = new ReservaVO(id, fechaLlegada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
+                    reservas.add(reservaVO);
+                }
             }
-            this.conexion.desconectarBD(conn);
-            return this.reserva;
-        } catch (SQLException var6) {
-            throw new ExcepcionHotel("No se ha podido realizar la operación");
+
+        } catch (SQLException e) {
+            throw new ExcepcionHotel("Error al obtener las reservas");
         }
+
+        return reservas;
     }
 
     public void addReserva(ReservaVO m) throws ExcepcionHotel{

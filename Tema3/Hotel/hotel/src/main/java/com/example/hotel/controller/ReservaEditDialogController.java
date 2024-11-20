@@ -57,7 +57,7 @@ public class ReservaEditDialogController {
 
     @FXML
     private void initialize() throws ExcepcionHotel {
-        ArrayList<ReservaVO> reservas = HotelModelo.obtenerReservas();
+        //ArrayList<ReservaVO> reservas = HotelModelo.obtenerReservas();
         /*cambiarBarra(clientes.size());
         progressBar.progressProperty().bindBidirectional(progreso);
         progressIndicator.progressProperty().bindBidirectional(progreso);*/

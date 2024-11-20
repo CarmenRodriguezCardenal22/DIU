@@ -27,17 +27,17 @@ public class ClienteEditDialogController {
         this.hotelModelo = hotelModelo;
     }
     @FXML
-    private Label dni;
+    private TextField dni;
     @FXML
-    private Label nombre;
+    private TextField nombre;
     @FXML
-    private Label apellidos;
+    private TextField apellidos;
     @FXML
-    private Label direccion;
+    private TextField direccion;
     @FXML
-    private Label ciudad;
+    private TextField ciudad;
     @FXML
-    private Label provincia;
+    private TextField provincia;
 
 
     private Stage dialogStage;
@@ -68,6 +68,9 @@ public class ClienteEditDialogController {
         this.cliente = cliente;
 
         dni.setText(cliente.getDni());
+        if(cliente.getDni() != null) {
+            dni.setDisable(true);
+        }
         nombre.setText(cliente.getFirstName());
         apellidos.setText(cliente.getLastName());
         direccion.setText(cliente.getStreet());

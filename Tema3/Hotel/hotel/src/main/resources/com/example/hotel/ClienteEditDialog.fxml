@@ -28,12 +28,12 @@
             <Label text="DIRECCION" GridPane.rowIndex="3" />
             <Label text="CIUDAD" GridPane.rowIndex="4" />
             <Label text="PROVINCIA" GridPane.rowIndex="5" />
-            <Label fx:id="dni" GridPane.columnIndex="1" />
-            <Label fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="apellidos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="direccion" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="ciudad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="provincia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="dni" GridPane.columnIndex="1" />
+            <TextField fx:id="nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="apellidos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="direccion" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="ciudad" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="provincia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="371.0" layoutY="344.0" prefHeight="29.0" prefWidth="147.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
