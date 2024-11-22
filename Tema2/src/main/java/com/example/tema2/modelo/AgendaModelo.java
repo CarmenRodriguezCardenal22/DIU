@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class AgendaModelo {
     static PersonRepository personRepository;
     public void setPersonRepository(PersonRepository personRepository) {
+
         this.personRepository = personRepository;
     }
     public static ArrayList<PersonVO> obtenerPersonas() throws ExceptionPerson {

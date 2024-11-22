@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="" />
+    <list default="true" id="4516368a-c35e-4577-8413-05284d79ad3d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/MainApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/controller/ImagenOverviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/controller/MonedaOverviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/controller/RootLayoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/modelo/MonedaModelo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/modelo/utilidad/MonedaUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/java/com/example/demo/vista/Moneda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/resources/com/example/demo/ImagenOverview.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/resources/com/example/demo/RootLayout.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ExamenEv1/demo/src/main/resources/estilos/BlueTheme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Conversor/.idea/Conversor.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Conversor/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tema3/Conversor/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tema2/modelo/AgendaModelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tema3/Conversor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Tema3/Conversor/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +81,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/usuario/DIU/Tema2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/usuario/DIU/Tema1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -111,6 +132,9 @@
       <workItem from="1731918820688" duration="6000" />
       <workItem from="1732009326901" duration="1459000" />
       <workItem from="1732020735068" duration="4000" />
+      <workItem from="1732273080339" duration="12000" />
+      <workItem from="1732275949264" duration="25000" />
+      <workItem from="1732277826311" duration="4068000" />
     </task>
     <servers />
   </component>

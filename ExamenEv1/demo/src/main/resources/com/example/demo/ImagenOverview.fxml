@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../../../estilos/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.ImagenOverviewController">
+   <children>
+      <ImageView fitHeight="168.0" fitWidth="224.0" layoutX="190.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="117.0" layoutY="321.0" prefHeight="33.0" prefWidth="183.0" text="Nº total de monedas:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="numMonedas" layoutX="329.0" layoutY="321.0" prefHeight="33.0" prefWidth="69.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

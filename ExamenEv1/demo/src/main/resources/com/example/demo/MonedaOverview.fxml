@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="700.0" styleClass="bakcground" stylesheets="@../../../estilos/BlueTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.MonedaOverviewController">
+    <children>
+        <SplitPane dividerPositions="0.36103151862464183" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <TableView fx:id="tabla" prefHeight="398.0" prefWidth="238.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                     <columns>
+                        <TableColumn fx:id="lista" prefWidth="75.0">
+                           <graphic>
+                              <Label text="LISTA DE MONEDAS" />
+                           </graphic>
+                        </TableColumn>
+                     </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+                    <children>
+                        <HBox layoutX="120.0" layoutY="244.0" prefHeight="35.0" prefWidth="255.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                     <children>
+                              <Button fx:id="convertir" mnemonicParsing="false" prefHeight="35.0" prefWidth="144.0" text="Convertir" />
+                        <Button fx:id="eliminar" mnemonicParsing="false" onAction="#handleDeleteMoneda" prefHeight="35.0" prefWidth="140.0" text="Eliminar" />
+                     </children></HBox>
+                        <Label layoutX="7.0" prefHeight="55.0" prefWidth="416.0" text="CONVERSOR" textAlignment="CENTER">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Label>
+                  <TextField fx:id="euros" layoutX="14.0" layoutY="170.0" />
+                  <TextField fx:id="moneda" layoutX="217.0" layoutY="170.0" />
+                  <Label layoutX="74.0" layoutY="129.0" prefHeight="26.0" prefWidth="69.0" text="EUROS">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="nombre" layoutX="277.0" layoutY="129.0" prefHeight="26.0" prefWidth="69.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
