@@ -128,7 +128,7 @@ public class ClienteOverviewController {
             boolean okClicked = mainApp.showReservasOverview(selectedCliente);
             if (okClicked) {
                 showClienteDetails(selectedCliente);
-                hotelModelo.obtenerReservas(selectedCliente.getDni());
+                hotelModelo.obtenerReservas();
             }
 
         } else {

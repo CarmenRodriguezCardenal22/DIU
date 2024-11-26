@@ -28,9 +28,9 @@ public class ReservaEditDialogController {
         this.hotelModelo = hotelModelo;
     }
     @FXML
-    private Label dniR;
+    private TextField dniR;
     @FXML
-    private Label nombreR;
+    private TextField nombreR;
 
     @FXML
     private DatePicker llegada;
@@ -45,6 +45,8 @@ public class ReservaEditDialogController {
     @FXML
     private VBox regimen;
     @FXML
+    private ToggleGroup elegir;
+    @FXML
     private RadioButton desayuno, pMedia, pCompleta;
     @FXML
     private Button aceptar, cancelar, limpiar;
@@ -52,7 +54,7 @@ public class ReservaEditDialogController {
 
     private Stage dialogStage;
     private Reserva reserva;
-    private Cliente cliente;
+    private Cliente cliente=new Cliente();
     private boolean okClicked = false;
 
     @FXML
@@ -78,7 +80,7 @@ public class ReservaEditDialogController {
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
 
-        dniR.setText(reserva.getDniCliente());
+        dniR.setText(cliente.getDni());
         nombreR.setText(cliente.getFirstName());
 
         llegada.setValue(reserva.getFechaLlegada());

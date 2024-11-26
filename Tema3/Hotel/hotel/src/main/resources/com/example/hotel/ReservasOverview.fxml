@@ -57,9 +57,9 @@
                   </GridPane>
                   <HBox layoutX="197.0" layoutY="352.0" prefHeight="32.0" prefWidth="186.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <Button fx:id="nuevo" mnemonicParsing="false" text="Nuevo" />
-                        <Button fx:id="editar" mnemonicParsing="false" text="Editar" />
-                        <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" text="Borrar" />
+                        <Button fx:id="nuevo" mnemonicParsing="false" onAction="#handleNewReserva" text="Nuevo" />
+                        <Button fx:id="editar" mnemonicParsing="false" onAction="#handleEditReserva" text="Editar" />
+                        <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleDeleteReserva" text="Borrar" />
                      </children>
                   </HBox>
                   <Label layoutX="7.0" prefHeight="55.0" prefWidth="416.0" text="DETALLES DE LA RESERVA">

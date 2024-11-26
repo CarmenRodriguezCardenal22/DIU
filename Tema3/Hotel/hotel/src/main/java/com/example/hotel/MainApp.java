@@ -4,7 +4,9 @@ import com.example.hotel.controller.ClienteEditDialogController;
 import com.example.hotel.controller.ClienteOverviewController;
 import com.example.hotel.controller.ReservaEditDialogController;
 import com.example.hotel.controller.ReservasOverviewController;
+import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
 import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
 import com.example.hotel.vista.Cliente;
@@ -19,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainApp extends Application {
     private Stage primaryStage;
@@ -68,6 +71,7 @@ public class MainApp extends Application {
             //System.out.println(hotelModelo.obtenerClientes());
             //System.out.println(hotelModelo.obtenerReservas());
             clienteData.addAll(hotelModelo.mostrarClientes());
+            reservaData.addAll(hotelModelo.mostrarReserva());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +82,13 @@ public class MainApp extends Application {
         return clienteData;
     }
 
-    public ObservableList<Reserva> getReservaData() {
+    public ObservableList<Reserva> getReservaData(Cliente cliente) {
+        ObservableList<Reserva> reservaData = FXCollections.observableArrayList();
+        for(Reserva reserva : reservaData){
+            if(reserva.getDniCliente().equals(cliente.getDni())){
+                reservaData.add(reserva);
+            }
+        }
         return reservaData;
     }
 
@@ -101,7 +111,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    public boolean showReservasOverview(Cliente cliente) {
+    public boolean showReservasOverview(Cliente cliente) throws ExcepcionHotel {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("ReservasOverview.fxml"));
@@ -114,6 +124,10 @@ public class MainApp extends Application {
 
             ReservasOverviewController controller = loader.getController();
             controller.setDialogStage(dialogStage);
+
+            //ArrayList<Reserva> lista=hotelModelo.mostrarReserva();
+            controller.setReserva(cliente);
+
             dialogStage.showAndWait();
 
             return controller.isOkClicked();

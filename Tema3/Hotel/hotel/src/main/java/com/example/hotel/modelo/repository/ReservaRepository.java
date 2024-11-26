@@ -6,7 +6,7 @@ import com.example.hotel.modelo.ReservaVO;
 import java.util.ArrayList;
 
 public interface ReservaRepository {
-    ArrayList<ReservaVO> ObtenerListaReserva(String var1) throws ExcepcionHotel;
+    ArrayList<ReservaVO> ObtenerListaReserva() throws ExcepcionHotel;
 
     void addReserva(ReservaVO var1) throws ExcepcionHotel;
 

@@ -3,6 +3,7 @@ package com.example.hotel.controller;
 import com.example.hotel.MainApp;
 import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,7 +11,9 @@ import javafx.stage.Stage;
 
 public class ReservasOverviewController {
     HotelModelo hotelModelo;
-
+    private MainApp mainApp=new MainApp();
+    private Cliente cliente;
+    private Reserva reserva;
     public void setHotelModelo(HotelModelo hotelModelo) {
         this.hotelModelo = hotelModelo;
     }
@@ -39,7 +42,7 @@ public class ReservasOverviewController {
     @FXML
     private Button nuevo, editar, borrar;
 
-    private MainApp mainApp=new MainApp();
+
 
     public ReservasOverviewController() {
     }
@@ -64,10 +67,9 @@ public class ReservasOverviewController {
         this.dialogStage = dialogStage;
     }
 
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-
-        tabla.setItems(mainApp.getReservaData());
+    public void setReserva(Cliente cliente) {
+        this.cliente=cliente;
+        tabla.setItems(mainApp.getReservaData(cliente));
     }
     @FXML
     private void handleDeleteReserva() throws ExcepcionHotel {
@@ -109,7 +111,7 @@ public class ReservasOverviewController {
         Reserva tempReserva = new Reserva();
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
-            mainApp.getReservaData().add(tempReserva);
+            mainApp.getReservaData(cliente).add(tempReserva);
             hotelModelo.addReserva(tempReserva);
         }
     }
