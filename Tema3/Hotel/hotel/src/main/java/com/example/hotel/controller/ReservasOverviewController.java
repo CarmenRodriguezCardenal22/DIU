@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class ReservasOverviewController {
-    HotelModelo hotelModelo;
+    HotelModelo hotelModelo=new HotelModelo();
     private MainApp mainApp=new MainApp();
     private Cliente cliente;
     private Reserva reserva;
@@ -24,6 +24,11 @@ public class ReservasOverviewController {
     private TableColumn<Reserva, String> codColumn;
     @FXML
     private TableColumn<Reserva, String> entradaColumn;
+
+    @FXML
+    private Label dniR;
+    @FXML
+    private Label nombreR;
 
     @FXML
     private Label cod;
@@ -69,6 +74,8 @@ public class ReservasOverviewController {
 
     public void setReserva(Cliente cliente) {
         this.cliente=cliente;
+        dniR.setText(cliente.getDni());
+        nombreR.setText(cliente.getFirstName());
         tabla.setItems(mainApp.getReservaData(cliente));
     }
     @FXML
@@ -111,7 +118,7 @@ public class ReservasOverviewController {
         Reserva tempReserva = new Reserva();
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
-            mainApp.getReservaData(cliente).add(tempReserva);
+            mainApp.getReservaData().add(tempReserva);
             hotelModelo.addReserva(tempReserva);
         }
     }

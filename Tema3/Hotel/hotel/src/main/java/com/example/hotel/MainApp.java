@@ -81,15 +81,18 @@ public class MainApp extends Application {
     public ObservableList<Cliente> getClienteData() {
         return clienteData;
     }
+    public ObservableList<Reserva> getReservaData() {
+        return reservaData;
+    }
 
     public ObservableList<Reserva> getReservaData(Cliente cliente) {
-        ObservableList<Reserva> reservaData = FXCollections.observableArrayList();
+        ObservableList<Reserva> reservas = FXCollections.observableArrayList();
         for(Reserva reserva : reservaData){
             if(reserva.getDniCliente().equals(cliente.getDni())){
-                reservaData.add(reserva);
+                reservas.add(reserva);
             }
         }
-        return reservaData;
+        return reservas;
     }
 
     public static void main(String[] args) {

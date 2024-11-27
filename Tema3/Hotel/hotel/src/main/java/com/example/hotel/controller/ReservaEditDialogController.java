@@ -8,6 +8,7 @@ import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -15,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReservaEditDialogController {
@@ -27,10 +29,6 @@ public class ReservaEditDialogController {
     public void setHotelModelo(HotelModelo hotelModelo) {
         this.hotelModelo = hotelModelo;
     }
-    @FXML
-    private TextField dniR;
-    @FXML
-    private TextField nombreR;
 
     @FXML
     private DatePicker llegada;
@@ -54,7 +52,7 @@ public class ReservaEditDialogController {
 
     private Stage dialogStage;
     private Reserva reserva;
-    private Cliente cliente=new Cliente();
+    private Cliente cliente;
     private boolean okClicked = false;
 
     @FXML
@@ -63,6 +61,12 @@ public class ReservaEditDialogController {
         /*cambiarBarra(clientes.size());
         progressBar.progressProperty().bindBidirectional(progreso);
         progressIndicator.progressProperty().bindBidirectional(progreso);*/
+        /*elegir=new ToggleGroup();
+        desayuno.setToggleGroup(elegir);
+        pMedia.setToggleGroup(elegir);
+        pCompleta.setToggleGroup(elegir);*/
+        tipo.setItems(FXCollections.observableArrayList("Doble individual", "Doble", "Junior Suite", "Suite"));
+
     }
 
     /*private void cambiarBarra(int n) {
@@ -80,9 +84,6 @@ public class ReservaEditDialogController {
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
 
-        dniR.setText(cliente.getDni());
-        nombreR.setText(cliente.getFirstName());
-
         llegada.setValue(reserva.getFechaLlegada());
         salida.setValue(reserva.getFechaSalida());
         if (numHabit.getValueFactory() != null) {
@@ -91,11 +92,23 @@ public class ReservaEditDialogController {
         tipo.setValue(reserva.getTipoHabitacion());
         fumador.setSelected(reserva.getFumador());
         regimen.getChildren().clear();
+
+        elegir = new ToggleGroup();
         for (String opcion : reserva.getRegimenOpciones()) {
-            CheckBox checkBox = new CheckBox(opcion);
-            checkBox.setSelected(reserva.getRegimenSeleccionado().contains(opcion));
-            regimen.getChildren().add(checkBox);
+            RadioButton radioButton = new RadioButton(opcion);
+            radioButton.setToggleGroup(elegir);
+            if (opcion.equals(reserva.getRegimenSeleccionado())) {
+                radioButton.setSelected(true);
+            }
+            regimen.getChildren().add(radioButton);
         }
+        elegir.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                RadioButton selectedRadioButton = (RadioButton) newValue;
+                List<String> seleccion = Collections.singletonList(selectedRadioButton.getText());
+                reserva.setRegimenSeleccionado(seleccion);
+            }
+        });
     }
 
 
@@ -113,16 +126,18 @@ public class ReservaEditDialogController {
             }
             reserva.setTipoHabitacion((String) tipo.getValue());
             reserva.setFumador(fumador.isSelected());
-            List<String> regimenSeleccionado = new ArrayList<>();
+            String regimenSeleccionado = "";
             for (Node node : regimen.getChildren()) {
-                if (node instanceof CheckBox) {
-                    CheckBox checkBox = (CheckBox) node;
-                    if (checkBox.isSelected()) {
-                        regimenSeleccionado.add(checkBox.getText());
+                if (node instanceof RadioButton) {
+                    RadioButton radioButton = (RadioButton) node;
+                    if (radioButton.isSelected()) {
+                        regimenSeleccionado = radioButton.getText();
+                        break;
                     }
                 }
             }
-            reserva.setRegimenSeleccionado(regimenSeleccionado);
+
+            reserva.setRegimenSeleccionado(Collections.singletonList(regimenSeleccionado));
 
             okClicked = true;
             dialogStage.close();
@@ -149,19 +164,8 @@ public class ReservaEditDialogController {
         if (tipo.getValue() == null || tipo.getValue().toString().isEmpty()) {
             errorMessage += "Tipo de habitación no seleccionado!\n";
         }
-        if (!fumador.isSelected() && fumador.isIndeterminate()) {
-            errorMessage += "Estado de fumador no especificado!\n";
-        }
-        boolean isRegimenSeleccionado = false;
-        for (Node node : regimen.getChildren()) {
-            if (node instanceof CheckBox) {
-                CheckBox checkBox = (CheckBox) node;
-                if (checkBox.isSelected()) {
-                    isRegimenSeleccionado = true;
-                    break;
-                }
-            }
-        }
+        boolean isRegimenSeleccionado = elegir.getSelectedToggle() != null;
+
         if (!isRegimenSeleccionado) {
             errorMessage += "No valid regimen selected!\n";
         }

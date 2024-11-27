@@ -52,8 +52,17 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            this.sentencia = "INSERT INTO Reservas (fechaLlegada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente) VALUES ('" + m.getFechaLlegada() + "','" + m.getFechaSalida() + "','"  + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + m.getFumador() + "','" + m.getRegimen() + "','" + m.getDniCliente() + "');";
+            System.out.println("entra1");
+            int fumador;
+            if(m.getFumador()==true){
+                fumador=1;
+            }
+            else{
+                fumador=0;
+            }
+            this.sentencia = "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES ('" + m.getFechaLlegada() + "','" + m.getFechaSalida() + "','"  + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + fumador + "','" + m.getRegimen() + "','" + m.getDniCliente() + "');";
             this.stmt.executeUpdate(this.sentencia);
+            System.out.println("entra2");
             this.stmt.close();
             this.conexion.desconectarBD(conn);
         } catch (SQLException var3) {
