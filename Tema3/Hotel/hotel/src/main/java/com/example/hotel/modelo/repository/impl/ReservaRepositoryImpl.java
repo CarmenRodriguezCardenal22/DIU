@@ -1,5 +1,6 @@
 package com.example.hotel.modelo.repository.impl;
 
+import com.example.hotel.controller.ReservaEditDialogController;
 import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.repository.ReservaRepository;
@@ -32,7 +33,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                 LocalDate fechaSalida = rs.getDate("fechaSalida").toLocalDate();
                 Integer numHabitaciones = rs.getInt("numeroHabitaciones");
                 String tipoHabitacion = rs.getString("tipoHabitacion");
-                Boolean fumador = rs.getBoolean("fumador");
+                Integer fumador = rs.getInt("fumador");
                 String regimen = rs.getString("regimenAlojamiento");
                 String dniCliente = rs.getString("dniCliente");
 
@@ -52,17 +53,9 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            System.out.println("entra1");
-            int fumador;
-            if(m.getFumador()==true){
-                fumador=1;
-            }
-            else{
-                fumador=0;
-            }
-            this.sentencia = "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES ('" + m.getFechaLlegada() + "','" + m.getFechaSalida() + "','"  + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + fumador + "','" + m.getRegimen() + "','" + m.getDniCliente() + "');";
+            this.sentencia = "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES ('" + m.getFechaLlegada() + "','" + m.getFechaSalida() + "','"  + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + m.getFumador() + "','" + m.getRegimen() + "','" + m.getDniCliente() + "');";
             this.stmt.executeUpdate(this.sentencia);
-            System.out.println("entra2");
+            System.out.println(m.toString());
             this.stmt.close();
             this.conexion.desconectarBD(conn);
         } catch (SQLException var3) {
@@ -89,7 +82,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE Reservas SET fechaLlegada = '%s', fechaSalida = '%s', numHabitaciones = '%s', tipoHabitacion = '%s', fumador = '%s', regimen = '%s', dniCliente = '%s' WHERE id = %d", reservaVO.getFechaLlegada(), reservaVO.getFechaSalida(), reservaVO.getNumHabitaciones(), reservaVO.getTipoHabitacion(), reservaVO.getFumador(), reservaVO.getRegimen(), reservaVO.getDniCliente(), lastId());
+            String sql = String.format("UPDATE Reservas SET fechaLlegada = '%s', fechaSalida = '%s', numeroHabitaciones = '%s', tipoHabitacion = '%s', fumador = '%s', regimenAlojamiento = '%s', dniCliente = '%s' WHERE id = %d", reservaVO.getFechaLlegada(), reservaVO.getFechaSalida(), reservaVO.getNumHabitaciones(), reservaVO.getTipoHabitacion(), reservaVO.getFumador(), reservaVO.getRegimen(), reservaVO.getDniCliente(), lastId());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
             System.out.println(var4.getMessage());

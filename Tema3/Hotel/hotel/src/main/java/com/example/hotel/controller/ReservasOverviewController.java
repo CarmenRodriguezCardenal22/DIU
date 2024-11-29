@@ -116,10 +116,12 @@ public class ReservasOverviewController {
     @FXML
     private void handleNewReserva() throws ExcepcionHotel {
         Reserva tempReserva = new Reserva();
+        tempReserva.setDniCliente(dniR.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
             mainApp.getReservaData().add(tempReserva);
             hotelModelo.addReserva(tempReserva);
+
         }
     }
 

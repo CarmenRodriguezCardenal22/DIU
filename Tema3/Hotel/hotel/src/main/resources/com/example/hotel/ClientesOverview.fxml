@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@../../../estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
     <children>
         <SplitPane dividerPositions="0.33612040133779264" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -22,7 +22,7 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
                     <children>
                         <GridPane layoutX="7.0" layoutY="55.0" prefHeight="270.0" prefWidth="416.0">
                             <columnConstraints>
@@ -52,11 +52,11 @@
                         <Label fx:id="provincia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             </children>
                         </GridPane>
-                        <HBox layoutX="197.0" layoutY="352.0" prefHeight="32.0" prefWidth="186.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                        <HBox layoutX="197.0" layoutY="352.0" prefHeight="35.0" prefWidth="297.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                             <children>
-                                <Button fx:id="nuevo" mnemonicParsing="false" onAction="#handleNewCliente" text="Nuevo" />
-                                <Button fx:id="editar" mnemonicParsing="false" onAction="#handleEditCliente" text="Editar" />
-                                <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleDeleteCliente" text="Borrar" />
+                                <Button fx:id="nuevo" mnemonicParsing="false" onAction="#handleNewCliente" prefHeight="35.0" prefWidth="98.0" text="Nuevo" />
+                                <Button fx:id="editar" mnemonicParsing="false" onAction="#handleEditCliente" prefHeight="35.0" prefWidth="97.0" text="Editar" />
+                                <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleDeleteCliente" prefHeight="35.0" prefWidth="94.0" text="Borrar" />
                             </children>
                         </HBox>
                         <Label layoutX="7.0" prefHeight="55.0" prefWidth="416.0" text="DETALLES DEL CLIENTE">
@@ -64,7 +64,7 @@
                                 <Font size="26.0" />
                             </font>
                         </Label>
-                        <Button fx:id="consultar" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleConsultarReservas" text="Consultar reservas" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" />
+                        <Button fx:id="consultar" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleConsultarReservas" prefHeight="35.0" prefWidth="166.0" text="Consultar reservas" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" />
                     </children>
                 </AnchorPane>
             </items>

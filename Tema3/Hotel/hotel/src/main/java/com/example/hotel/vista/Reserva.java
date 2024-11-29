@@ -13,21 +13,21 @@ public class Reserva {
     private final ObjectProperty<LocalDate> fechaSalida;
     private final IntegerProperty numHabitaciones;
     private final StringProperty tipoHabitacion;
-    private final BooleanProperty fumador;
+    private final IntegerProperty fumador;
     private final StringProperty regimen;
     private final StringProperty dniCliente;
 
     public Reserva() {
-        this(0, null, null, 0, null, false, null, null);
+        this(0, null, null, 0, null, 0, null, null);
     }
 
-    public Reserva(Integer id,LocalDate fechaLlegada, LocalDate fechaSalida, Integer numHabitaciones, String tipoHabitacion, Boolean fumador, String regimen, String dniCliente) {
+    public Reserva(Integer id,LocalDate fechaLlegada, LocalDate fechaSalida, Integer numHabitaciones, String tipoHabitacion, Integer fumador, String regimen, String dniCliente) {
         this.id = new SimpleIntegerProperty(id);
         this.fechaLlegada = new SimpleObjectProperty<LocalDate>(fechaLlegada);
         this.fechaSalida = new SimpleObjectProperty<LocalDate>(fechaSalida);
         this.numHabitaciones = new SimpleIntegerProperty(numHabitaciones);
         this.tipoHabitacion = new SimpleStringProperty(tipoHabitacion);
-        this.fumador = new SimpleBooleanProperty(fumador);
+        this.fumador = new SimpleIntegerProperty(fumador);
         this.regimen = new SimpleStringProperty(regimen);
         this.dniCliente = new SimpleStringProperty(dniCliente);
     }
@@ -84,15 +84,15 @@ public class Reserva {
         return tipoHabitacion;
     }
 
-    public Boolean getFumador() {
+    public Integer getFumador() {
         return fumador.get();
     }
 
-    public void setFumador(Boolean fumador) {
+    public void setFumador(Integer fumador) {
         this.fumador.set(fumador);
     }
 
-    public BooleanProperty fumadorProperty() {
+    public IntegerProperty fumadorProperty() {
         return fumador;
     }
 

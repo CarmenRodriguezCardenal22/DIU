@@ -3,14 +3,13 @@ package com.example.hotel.modelo;
 import java.time.LocalDate;
 
 public class ReservaVO {
-    Integer id, numHabitaciones;
+    Integer id, numHabitaciones, fumador;
     String tipoHabitacion, regimen, dniCliente;
     LocalDate fechaLlegada, fechaSalida;
-    Boolean fumador;
 
-    public ReservaVO() {this(0,null,null,0,null,false, null,null);}
+    public ReservaVO() {this(0,null,null,0,null,0, null,null);}
 
-    public ReservaVO(Integer id,LocalDate fechaLlegada, LocalDate fechaSalida, Integer numHabitaciones, String tipoHabitacion, Boolean fumador, String regimen, String dniCliente) {
+    public ReservaVO(Integer id,LocalDate fechaLlegada, LocalDate fechaSalida, Integer numHabitaciones, String tipoHabitacion, Integer fumador, String regimen, String dniCliente) {
         this.id = id;
         this.fechaLlegada = fechaLlegada;
         this.fechaSalida = fechaSalida;
@@ -36,8 +35,8 @@ public class ReservaVO {
     public String getTipoHabitacion() {return this.tipoHabitacion;}
     public void setTipoHabitacion(String tipoHabitacion) {this.tipoHabitacion = tipoHabitacion;}
 
-    public Boolean getFumador() {return this.fumador;}
-    public void setFumador(Boolean fumador) {this.fumador = fumador;}
+    public Integer getFumador() {return this.fumador;}
+    public void setFumador(Integer fumador) {this.fumador = fumador;}
 
     public String getRegimen() {return this.regimen;}
     public void setRegimen(String regimen) {this.regimen = regimen;}

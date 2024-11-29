@@ -69,6 +69,15 @@ public class ReservaEditDialogController {
 
     }
 
+    public void fumador(){
+        if(fumador.isSelected()){
+            reserva.setFumador(1);
+        }
+        else {
+            reserva.setFumador(0);
+        }
+    }
+
     /*private void cambiarBarra(int n) {
         progreso.set(n / 50.0);
     }
@@ -90,7 +99,7 @@ public class ReservaEditDialogController {
             numHabit.getValueFactory().setValue(reserva.getNumHabitaciones());
         }
         tipo.setValue(reserva.getTipoHabitacion());
-        fumador.setSelected(reserva.getFumador());
+        fumador.setSelected(reserva.getFumador() == 1);
         regimen.getChildren().clear();
 
         elegir = new ToggleGroup();
@@ -109,6 +118,7 @@ public class ReservaEditDialogController {
                 reserva.setRegimenSeleccionado(seleccion);
             }
         });
+
     }
 
 
@@ -125,7 +135,7 @@ public class ReservaEditDialogController {
                 reserva.setNumHabitaciones((Integer) numHabit.getValue());
             }
             reserva.setTipoHabitacion((String) tipo.getValue());
-            reserva.setFumador(fumador.isSelected());
+            reserva.setFumador(fumador.isSelected() ? 1 : 0);
             String regimenSeleccionado = "";
             for (Node node : regimen.getChildren()) {
                 if (node instanceof RadioButton) {
@@ -136,7 +146,6 @@ public class ReservaEditDialogController {
                     }
                 }
             }
-
             reserva.setRegimenSeleccionado(Collections.singletonList(regimenSeleccionado));
 
             okClicked = true;

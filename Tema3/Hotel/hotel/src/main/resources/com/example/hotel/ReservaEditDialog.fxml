@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaEditDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" styleClass="background" stylesheets="@../../../estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaEditDialogController">
     <children>
         <SplitPane dividerPositions="0.36454849498327757" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -22,7 +22,7 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="408.0">
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="408.0" styleClass="background">
                     <children>
                         <GridPane layoutX="8.0" layoutY="61.0" prefHeight="270.0" prefWidth="416.0">
                             <columnConstraints>
@@ -63,7 +63,7 @@
                         <ChoiceBox fx:id="tipo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             </children>
                         </GridPane>
-                        <HBox layoutX="197.0" layoutY="352.0" prefHeight="32.0" prefWidth="143.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                        <HBox layoutX="197.0" layoutY="352.0" prefHeight="35.0" prefWidth="204.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                             <children>
                                 <Button fx:id="aceptar" mnemonicParsing="false" onAction="#handleOk" text="Aceptar" />
                                 <Button fx:id="cancelar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />

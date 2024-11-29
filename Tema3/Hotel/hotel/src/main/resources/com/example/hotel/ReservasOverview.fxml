@@ -5,16 +5,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservasOverviewController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="background" stylesheets="@../../../estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservasOverviewController">
    <children>
-      <SplitPane fx:id="reservas" dividerPositions="0.33612040133779264" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane fx:id="reservas" dividerPositions="0.32706766917293234" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="tabla" prefHeight="398.0" prefWidth="197.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="tabla" prefHeight="498.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-30.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="codColumn" prefWidth="67.0" text="CODIGO" />
-                      <TableColumn fx:id="entradaColumn" prefWidth="129.0" text="FECHA ENTRADA" />
+                      <TableColumn fx:id="codColumn" prefWidth="97.0" text="CODIGO" />
+                      <TableColumn fx:id="entradaColumn" prefWidth="179.0" text="FECHA ENTRADA" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -22,7 +22,7 @@
                   </TableView>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="416.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="608.0" styleClass="background">
                <children>
                   <GridPane layoutX="8.0" layoutY="164.0" prefHeight="270.0" prefWidth="416.0">
                     <columnConstraints>
@@ -55,11 +55,11 @@
                         <Label fx:id="regimen" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
-                  <HBox layoutX="197.0" layoutY="352.0" prefHeight="32.0" prefWidth="186.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+                  <HBox layoutX="197.0" layoutY="352.0" prefHeight="35.0" prefWidth="285.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                      <children>
-                        <Button fx:id="nuevo" mnemonicParsing="false" onAction="#handleNewReserva" text="Nuevo" />
-                        <Button fx:id="editar" mnemonicParsing="false" onAction="#handleEditReserva" text="Editar" />
-                        <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleDeleteReserva" text="Borrar" />
+                        <Button fx:id="nuevo" mnemonicParsing="false" onAction="#handleNewReserva" prefHeight="35.0" prefWidth="92.0" text="Nuevo" />
+                        <Button fx:id="editar" mnemonicParsing="false" onAction="#handleEditReserva" prefHeight="35.0" prefWidth="94.0" text="Editar" />
+                        <Button fx:id="borrar" lineSpacing="2.0" mnemonicParsing="false" onAction="#handleDeleteReserva" prefHeight="35.0" prefWidth="90.0" text="Borrar" />
                      </children>
                   </HBox>
                   <Label layoutX="8.0" layoutY="115.0" prefHeight="55.0" prefWidth="416.0" text="DETALLES DE LA RESERVA">
