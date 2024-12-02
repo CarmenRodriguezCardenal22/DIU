@@ -35,6 +35,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                 String tipoHabitacion = rs.getString("tipoHabitacion");
                 Integer fumador = rs.getInt("fumador");
                 String regimen = rs.getString("regimenAlojamiento");
+                System.out.println(regimen);
                 String dniCliente = rs.getString("dniCliente");
 
                 this.reserva = new ReservaVO(id, fechaLlegada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
@@ -50,7 +51,35 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
 
     public void addReserva(ReservaVO m) throws ExcepcionHotel{
-        try {
+        String sql= "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try(Connection conn = this.conexion.conectarBD()){
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setDate(1, java.sql.Date.valueOf(m.getFechaLlegada()));
+            ps.setDate(2, java.sql.Date.valueOf(m.getFechaSalida()));
+            ps.setInt(3, m.getNumHabitaciones());
+            ps.setString(4, m.getTipoHabitacion());
+            ps.setInt(5, m.getFumador());
+            if (reserva.getRegimen() == null || reserva.getRegimen().isEmpty()) {
+                throw new ExcepcionHotel("El régimen de alojamiento no puede ser nulo o vacío.");
+            }
+            ps.setString(6, m.getRegimen());
+            ps.setString(7, m.getDniCliente());
+
+            ps.executeUpdate();
+            ps.close();
+
+            this.conexion.desconectarBD(conn);
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new ExcepcionHotel("Error al agregar el reserva");
+        }
+
+
+
+
+        /*try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             this.sentencia = "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES ('" + m.getFechaLlegada() + "','" + m.getFechaSalida() + "','"  + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + m.getFumador() + "','" + m.getRegimen() + "','" + m.getDniCliente() + "');";
@@ -61,7 +90,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         } catch (SQLException var3) {
             System.out.println(var3.getMessage());
             throw new ExcepcionHotel("No se ha podido realizar la operación");
-        }
+        }*/
     }
 
     public void deleteReserva(Integer id) throws ExcepcionHotel {

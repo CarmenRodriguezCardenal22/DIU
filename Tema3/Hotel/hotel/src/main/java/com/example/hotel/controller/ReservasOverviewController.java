@@ -115,6 +115,11 @@ public class ReservasOverviewController {
     }
     @FXML
     private void handleNewReserva() throws ExcepcionHotel {
+        String regimen = reserva.getRegimen();
+        if (regimen == null || regimen.trim().isEmpty()) {
+            System.out.println("Debe especificar un régimen de alojamiento.");
+            return;
+        }
         Reserva tempReserva = new Reserva();
         tempReserva.setDniCliente(dniR.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
