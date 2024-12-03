@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.swing.text.TableView;
+
 public class ReservasOverviewController {
     HotelModelo hotelModelo=new HotelModelo();
     private MainApp mainApp=new MainApp();
@@ -44,6 +46,10 @@ public class ReservasOverviewController {
     private Label fumador;
     @FXML
     private Label regimen;
+
+    @FXML
+    private TextField buscarIdField;
+
     @FXML
     private Button nuevo, editar, borrar;
 
@@ -54,13 +60,15 @@ public class ReservasOverviewController {
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
         codColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asString());
         entradaColumn.setCellValueFactory(cellData -> cellData.getValue().fechaLlegadaProperty().asString());
         showReservasDetails(null);
 
         tabla.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showReservasDetails(newValue));
+
+        // Listener para el buscador por ID
+        buscarIdField.textProperty().addListener((observable, oldValue, newValue) -> buscarReservaPorId(newValue));
     }
     private boolean okClicked = false;
     public boolean isOkClicked() {
@@ -122,7 +130,7 @@ public class ReservasOverviewController {
             mainApp.getReservaData().add(tempReserva);
             tabla.setItems(mainApp.getReservaData(cliente));
             hotelModelo.addReserva(tempReserva);
-
+            tabla.sort();
         }
     }
 
@@ -145,4 +153,36 @@ public class ReservasOverviewController {
             alert.showAndWait();
         }
     }
+    private void buscarReservaPorId(String idTexto) {
+        try {
+            if (idTexto == null || idTexto.trim().isEmpty()) {
+                // Si el campo está vacío, muestra detalles en blanco
+                showReservasDetails(null);
+                return;
+            }
+
+            Integer id = Integer.parseInt(idTexto);
+
+            // Busca la reserva en los datos
+            Reserva reservaEncontrada = null;
+            for (Reserva reserva : mainApp.getReservaData(cliente)) {
+                if (reserva.getId().equals(id)) {
+                    reservaEncontrada = reserva;
+                    break;
+                }
+            }
+
+            // Muestra los detalles o los limpia si no se encuentra
+            if (reservaEncontrada != null) {
+                tabla.getSelectionModel().select(reservaEncontrada);
+                showReservasDetails(reservaEncontrada);
+            } else {
+                showReservasDetails(null); // Limpia los detalles si no hay coincidencia
+            }
+        } catch (NumberFormatException e) {
+            // Limpia los detalles si el ID ingresado no es válido
+            showReservasDetails(null);
+        }
+    }
+
 }

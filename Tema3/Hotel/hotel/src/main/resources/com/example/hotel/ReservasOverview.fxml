@@ -89,7 +89,8 @@
                      </font>
                   </Label>
                </children>
-            </AnchorPane>
+              <TextField fx:id="buscarIdField" promptText="Introduce ID de la reserva" />
+          </AnchorPane>
         </items>
       </SplitPane>
    </children>

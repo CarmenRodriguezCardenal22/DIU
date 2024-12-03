@@ -35,6 +35,9 @@ public class ClienteOverviewController {
     private Label provincia;
 
     @FXML
+    private TextField buscarDniField;
+
+    @FXML
     private Button nuevo, editar, borrar, consultar;
 
     private MainApp mainApp=new MainApp();
@@ -44,11 +47,15 @@ public class ClienteOverviewController {
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
+        // Inicializar las columnas de la tabla
         nombreColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         apellidosColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         showClienteDetails(null);
 
+        // Listener para cambios en el campo de texto buscarDniField
+        buscarDniField.textProperty().addListener((observable, oldValue, newValue) -> buscarPorDni(newValue));
+
+        // Listener para cambios en la selección de la tabla
         tabla.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showClienteDetails(newValue));
     }
@@ -95,7 +102,18 @@ public class ClienteOverviewController {
     private void handleNewCliente() throws ExcepcionHotel {
         Cliente tempCliente = new Cliente();
         boolean okClicked = mainApp.showClienteEditDialog(tempCliente);
+
         if (okClicked) {
+            // Validar el DNI antes de añadirlo
+            if (!validarDni(tempCliente.getDni())) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Formato inválido");
+                alert.setHeaderText("DNI inválido");
+                alert.setContentText("El DNI no es válido. Asegúrate de que el número se corresponde con la letra.");
+                alert.showAndWait();
+                return;
+            }
+
             mainApp.getClienteData().add(tempCliente);
             hotelModelo.addCliente(tempCliente);
             tabla.sort();
@@ -141,4 +159,56 @@ public class ClienteOverviewController {
             alert.showAndWait();
         }
     }
+    private void buscarPorDni(String dni) {
+        if (dni == null || dni.trim().isEmpty()) {
+            tabla.getSelectionModel().clearSelection();
+            showClienteDetails(null);
+            return;
+        }
+
+        // Validar el formato del DNI
+        if (!validarDni(dni)) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Formato inválido");
+            alert.setHeaderText("DNI inválido");
+            alert.setContentText("Por favor, ingrese un DNI válido (número y letra deben coincidir).");
+            alert.showAndWait();
+            return;
+        }
+
+        // Buscar el cliente por DNI
+        Cliente clienteEncontrado = null;
+        for (Cliente cliente : tabla.getItems()) {
+            if (cliente.getDni().equalsIgnoreCase(dni.trim())) {
+                clienteEncontrado = cliente;
+                break;
+            }
+        }
+
+        if (clienteEncontrado != null) {
+            tabla.getSelectionModel().select(clienteEncontrado);
+            tabla.scrollTo(clienteEncontrado);
+            showClienteDetails(clienteEncontrado);
+        } else {
+            tabla.getSelectionModel().clearSelection();
+            showClienteDetails(null);
+        }
+    }
+    private boolean validarDni(String dni) {
+        // Asegurarnos de que el formato básico es correcto (8 dígitos y 1 letra)
+        if (!dni.matches("\\d{8}[A-Za-z]")) {
+            return false;
+        }
+
+        // Separar el número y la letra
+        int numero = Integer.parseInt(dni.substring(0, 8));
+        char letra = Character.toUpperCase(dni.charAt(8));
+
+        // Array de letras según la tabla de módulo 23
+        char[] letrasDni = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+
+        // Comparar la letra calculada con la letra proporcionada
+        return letra == letrasDni[numero % 23];
+    }
+
 }

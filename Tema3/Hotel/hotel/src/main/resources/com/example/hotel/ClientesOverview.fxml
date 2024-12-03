@@ -66,6 +66,7 @@
                         </Label>
                         <Button fx:id="consultar" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleConsultarReservas" prefHeight="35.0" prefWidth="166.0" text="Consultar reservas" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="5.0" />
                     </children>
+                    <TextField fx:id="buscarDniField" promptText="Buscar por DNI" />
                 </AnchorPane>
             </items>
         </SplitPane>
