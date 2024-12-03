@@ -114,8 +114,7 @@ public class ReservaEditDialogController {
         elegir.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 RadioButton selectedRadioButton = (RadioButton) newValue;
-                List<String> seleccion = Collections.singletonList(selectedRadioButton.getText());
-                reserva.setRegimenSeleccionado(seleccion);
+                reserva.setRegimenInsertado(selectedRadioButton.getText());
             }
         });
 
@@ -136,17 +135,14 @@ public class ReservaEditDialogController {
             }
             reserva.setTipoHabitacion((String) tipo.getValue());
             reserva.setFumador(fumador.isSelected() ? 1 : 0);
-            String regimenSeleccionado = "";
-            for (Node node : regimen.getChildren()) {
-                if (node instanceof RadioButton) {
-                    RadioButton radioButton = (RadioButton) node;
-                    if (radioButton.isSelected()) {
-                        regimenSeleccionado = radioButton.getText();
-                        break;
-                    }
-                }
+            if(elegir.getSelectedToggle() != null){
+                RadioButton selectedRadioButton = (RadioButton) elegir.getSelectedToggle();
+                System.out.println(selectedRadioButton.getText());
+                reserva.setRegimenInsertado(selectedRadioButton.getText());
             }
-            reserva.setRegimenSeleccionado(Collections.singletonList(regimenSeleccionado));
+            else{
+                reserva.setRegimenInsertado("ninguno");
+            }
 
             okClicked = true;
             dialogStage.close();

@@ -94,6 +94,7 @@ public class MainApp extends Application {
         }
         return reservas;
     }
+    //insertar, limpiar tabla(clear),meterlo otra vez en la tabla
 
     public static void main(String[] args) {
         launch(args);

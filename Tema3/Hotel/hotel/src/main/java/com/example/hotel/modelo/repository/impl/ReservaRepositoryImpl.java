@@ -35,7 +35,6 @@ public class ReservaRepositoryImpl implements ReservaRepository {
                 String tipoHabitacion = rs.getString("tipoHabitacion");
                 Integer fumador = rs.getInt("fumador");
                 String regimen = rs.getString("regimenAlojamiento");
-                System.out.println(regimen);
                 String dniCliente = rs.getString("dniCliente");
 
                 this.reserva = new ReservaVO(id, fechaLlegada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimen, dniCliente);
@@ -51,7 +50,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
 
 
     public void addReserva(ReservaVO m) throws ExcepcionHotel{
-        String sql= "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        /*String sql= "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try(Connection conn = this.conexion.conectarBD()){
             PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -74,23 +73,22 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new ExcepcionHotel("Error al agregar el reserva");
-        }
+        }*/
 
 
 
 
-        /*try {
+        try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             this.sentencia = "INSERT INTO Reservas (fechaLlegada, fechaSalida, numeroHabitaciones, tipoHabitacion, fumador, regimenAlojamiento, dniCliente) VALUES ('" + m.getFechaLlegada() + "','" + m.getFechaSalida() + "','"  + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + m.getFumador() + "','" + m.getRegimen() + "','" + m.getDniCliente() + "');";
             this.stmt.executeUpdate(this.sentencia);
-            System.out.println(m.toString());
             this.stmt.close();
             this.conexion.desconectarBD(conn);
         } catch (SQLException var3) {
             System.out.println(var3.getMessage());
             throw new ExcepcionHotel("No se ha podido realizar la operación");
-        }*/
+        }
     }
 
     public void deleteReserva(Integer id) throws ExcepcionHotel {

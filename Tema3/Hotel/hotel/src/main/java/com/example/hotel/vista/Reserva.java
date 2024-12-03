@@ -16,6 +16,7 @@ public class Reserva {
     private final IntegerProperty fumador;
     private final StringProperty regimen;
     private final StringProperty dniCliente;
+    private String regimenInsertado;
 
     public Reserva() {
         this(0, null, null, 0, null, 0, null, null);
@@ -130,5 +131,12 @@ public class Reserva {
         return regimenSeleccionado;
     }
 
+    public String getRegimenInsertado() {
+        return regimenInsertado;
+    }
+
+    public void setRegimenInsertado(String regimenInsertado) {
+        this.regimenInsertado = regimenInsertado;
+    }
 }
 

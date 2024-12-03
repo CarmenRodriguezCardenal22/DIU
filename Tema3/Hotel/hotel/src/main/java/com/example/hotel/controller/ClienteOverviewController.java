@@ -98,6 +98,7 @@ public class ClienteOverviewController {
         if (okClicked) {
             mainApp.getClienteData().add(tempCliente);
             hotelModelo.addCliente(tempCliente);
+            tabla.sort();
         }
     }
 

@@ -23,7 +23,7 @@ public class ReservaUtil {
         reservaVO.setNumHabitaciones(reserva.getNumHabitaciones());
         reservaVO.setTipoHabitacion(reserva.getTipoHabitacion());
         reservaVO.setFumador(reserva.getFumador());
-        reservaVO.setRegimen(reserva.getRegimen());
+        reservaVO.setRegimen(reserva.getRegimenInsertado());
         reservaVO.setDniCliente(reserva.getDniCliente());
         return reservaVO;
     }
