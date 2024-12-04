@@ -3,13 +3,17 @@ package com.example.hotel.controller;
 import com.example.hotel.MainApp;
 import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.modelo.utilidad.ReservaUtil;
 import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import javax.swing.text.TableView;
+import java.util.ArrayList;
+
 
 public class ReservasOverviewController {
     HotelModelo hotelModelo=new HotelModelo();
@@ -127,9 +131,17 @@ public class ReservasOverviewController {
         tempReserva.setDniCliente(dniR.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
-            mainApp.getReservaData().add(tempReserva);
-            tabla.setItems(mainApp.getReservaData(cliente));
             hotelModelo.addReserva(tempReserva);
+            ArrayList<Reserva> listaReservas = ReservaUtil.pasarReservaLista(hotelModelo.obtenerReservas());
+            ObservableList<Reserva> reservas = FXCollections.observableArrayList(listaReservas);
+            ObservableList<Reserva> reservasObservable = FXCollections.observableArrayList();
+
+            for(Reserva reserva : reservas) {
+                if(reserva.getDniCliente().equals(dniR.getText())) {
+                    reservasObservable.add(reserva);
+                }
+            }
+            tabla.setItems(reservasObservable);
             tabla.sort();
         }
     }
