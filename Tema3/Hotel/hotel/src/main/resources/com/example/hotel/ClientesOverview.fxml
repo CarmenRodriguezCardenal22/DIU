@@ -20,7 +20,7 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                         </TableView>
-                       <TextField fx:id="buscarDniField" layoutY="563.0" prefHeight="35.0" prefWidth="297.0" promptText="Buscar por DNI" />
+                        <TextField fx:id="buscarDniField" layoutX="0" layoutY="440.0" prefHeight="35.0" prefWidth="297.0" promptText="Introduce un DNI" />
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">

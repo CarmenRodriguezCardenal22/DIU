@@ -4,11 +4,13 @@ import com.example.hotel.MainApp;
 import javafx.fxml.FXML;
 
 public class RootLayoutController {
-    private MainApp mainApp=new MainApp();
+    private MainApp mainApp = new MainApp();
+
     @FXML
     private void handleOcupationStatistics() {
         mainApp.showOcupationStatistics();
     }
-    public RootLayoutController(){
+
+    public RootLayoutController() {
     }
 }

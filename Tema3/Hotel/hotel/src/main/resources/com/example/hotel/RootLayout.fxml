@@ -6,6 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../estilos/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -23,11 +24,11 @@
                   </Menu>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Aplicacion">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Documentacion" />
-            </items>
-          </Menu>
+            <Menu mnemonicParsing="false" text="Aplicacion">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Documentacion" />
+                </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>

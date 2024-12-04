@@ -217,33 +217,32 @@ public class ReservaEditDialogController {
     }
     @FXML
     private void handleLimpiar() {
-        // Obtén las fechas de los DatePickers
-        LocalDate fechaInicioValue = fechaInicio.getValue();
-        LocalDate fechaFinalValue = fechaFinal.getValue();
+        // Restablecer campos de fecha
+        llegada.setValue(null);
+        salida.setValue(null);
 
-        // Verifica que ambas fechas no sean nulas antes de compararlas
-        if (fechaInicioValue != null && fechaFinalValue != null) {
-            if (fechaInicioValue.isBefore(fechaFinalValue)) {
-                // La fecha de inicio es antes que la fecha final
-                System.out.println("La fecha de inicio es antes de la fecha final.");
-            } else {
-                // La fecha de inicio no es antes que la fecha final (puede ser igual o posterior)
-                System.out.println("La fecha de inicio no es antes de la fecha final.");
-            }
-        } else {
-            // Si alguna de las fechas es nula, maneja el caso adecuadamente
-            if (fechaInicioValue == null) {
-                System.out.println("La fecha de inicio no está seleccionada.");
-            }
-            if (fechaFinalValue == null) {
-                System.out.println("La fecha final no está seleccionada.");
-            }
+        // Restablecer el Spinner (Número de habitaciones)
+        if (numHabit.getValueFactory() != null) {
+            numHabit.getValueFactory().setValue(1); // Valor inicial predeterminado
         }
 
-        // Limpiar las fechas de los DatePickers
-        fechaInicio.setValue(null);
-        fechaFinal.setValue(null);
-    }
+        // Restablecer el ChoiceBox (Tipo de habitación)
+        tipo.setValue(null);
+
+        // Restablecer el CheckBox (Fumador)
+        fumador.setSelected(false);
+
+        // Restablecer el VBox (Régimen)
+        regimen.getChildren().clear();
+
+        // Restablecer el grupo de botones de opción (elegir)
+        elegir.getToggles().clear();
+
+        // Limpiar el mensaje del fumador
+        mensajeFumador.setText("");
+
+        // Opcionalmente, también puedes restablecer la instancia de reserva si se desea:
+        reserva = null;
     }
 
 }

@@ -16,12 +16,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class MainApp extends Application {
     private Stage primaryStage;
@@ -39,7 +40,7 @@ public class MainApp extends Application {
         initRootLayout();
         showClienteOverview();
 
-        // this.primaryStage.getIcons().add(new Image("file:resources/images/icono32.png"));
+         //this.primaryStage.getIcons().add(new Image("file:resources/images/icono32.png"));
         // Image imagen = new Image("file:resources/imagenes/icono32.png", 50, 50, true, true);
     }
 
@@ -94,7 +95,6 @@ public class MainApp extends Application {
         }
         return reservas;
     }
-    //insertar, limpiar tabla(clear),meterlo otra vez en la tabla
 
     public static void main(String[] args) {
         launch(args);

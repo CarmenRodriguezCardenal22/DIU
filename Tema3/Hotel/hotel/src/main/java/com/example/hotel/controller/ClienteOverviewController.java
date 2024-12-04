@@ -6,6 +6,7 @@ import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.vista.Cliente;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 
 public class ClienteOverviewController {
     HotelModelo hotelModelo;
@@ -53,7 +54,12 @@ public class ClienteOverviewController {
         showClienteDetails(null);
 
         // Listener para cambios en el campo de texto buscarDniField
-        buscarDniField.textProperty().addListener((observable, oldValue, newValue) -> buscarPorDni(newValue));
+        buscarDniField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {  // Si se presiona Enter
+                String dni = buscarDniField.getText();
+                buscarPorDni(dni);  // Validar y buscar por DNI
+            }
+        });
 
         // Listener para cambios en la selección de la tabla
         tabla.getSelectionModel().selectedItemProperty().addListener(
@@ -81,6 +87,7 @@ public class ClienteOverviewController {
             ciudad.setText("");
             provincia.setText("");
         }
+
     }
     @FXML
     private void handleDeleteCliente() throws ExcepcionHotel {
@@ -104,8 +111,20 @@ public class ClienteOverviewController {
         boolean okClicked = mainApp.showClienteEditDialog(tempCliente);
 
         if (okClicked) {
-            // Validar el DNI antes de añadirlo
-            if (!validarDni(tempCliente.getDni())) {
+            String dni = tempCliente.getDni();
+
+            // Validar el DNI solo cuando se haya introducido completamente
+            if (dni == null || dni.trim().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("DNI Vacío");
+                alert.setHeaderText("DNI no ingresado");
+                alert.setContentText("Por favor, ingrese un DNI válido.");
+                alert.showAndWait();
+                return;
+            }
+
+            // Validar el formato del DNI
+            if (!validarDni(dni)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Formato inválido");
                 alert.setHeaderText("DNI inválido");
@@ -114,6 +133,7 @@ public class ClienteOverviewController {
                 return;
             }
 
+            // Si el DNI es válido, agregar el cliente
             mainApp.getClienteData().add(tempCliente);
             hotelModelo.addCliente(tempCliente);
             tabla.sort();
@@ -161,8 +181,8 @@ public class ClienteOverviewController {
     }
     private void buscarPorDni(String dni) {
         if (dni == null || dni.trim().isEmpty()) {
-            tabla.getSelectionModel().clearSelection();
-            showClienteDetails(null);
+            tabla.getSelectionModel().clearSelection(); // Limpiar selección
+            showClienteDetails(null); // Limpiar detalles
             return;
         }
 
@@ -178,22 +198,24 @@ public class ClienteOverviewController {
 
         // Buscar el cliente por DNI
         Cliente clienteEncontrado = null;
-        for (Cliente cliente : tabla.getItems()) {
+        for (Cliente cliente : mainApp.getClienteData()) { // Cambiado para buscar en los datos del cliente
             if (cliente.getDni().equalsIgnoreCase(dni.trim())) {
                 clienteEncontrado = cliente;
                 break;
             }
         }
 
+        // Si se encuentra el cliente, seleccionarlo y mostrar los detalles
         if (clienteEncontrado != null) {
-            tabla.getSelectionModel().select(clienteEncontrado);
-            tabla.scrollTo(clienteEncontrado);
-            showClienteDetails(clienteEncontrado);
+            tabla.getSelectionModel().select(clienteEncontrado); // Selecciona el cliente en la tabla
+            tabla.scrollTo(clienteEncontrado); // Desplaza la tabla si es necesario
+            showClienteDetails(clienteEncontrado); // Muestra los detalles
         } else {
-            tabla.getSelectionModel().clearSelection();
-            showClienteDetails(null);
+            tabla.getSelectionModel().clearSelection(); // Limpiar selección si no se encuentra el cliente
+            showClienteDetails(null); // Limpiar detalles
         }
     }
+
     private boolean validarDni(String dni) {
         // Asegurarnos de que el formato básico es correcto (8 dígitos y 1 letra)
         if (!dni.matches("\\d{8}[A-Za-z]")) {
