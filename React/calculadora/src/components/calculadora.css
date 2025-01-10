@@ -1,8 +1,25 @@
 *{
     text-align: center;
     font-size: 20px;
+    
     .op{
         background-color: #f89f2a;
     }
+    button{
+        height: 5vh;
+        width: 10vw;
+    }
+    .cero{
+        height: 5vh;
+        width: 20vw;
+    }
+    .texto{
+        height: 5vh;
+        width: 40vw;
+    }
+    input{
+        background-color: rgba(88, 88, 99, 0.329);
+    }
+    
     
 }
