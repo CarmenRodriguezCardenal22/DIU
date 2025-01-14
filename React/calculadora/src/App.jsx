@@ -15,45 +15,50 @@ function App() {
     } else {
       setN((prev) => prev + valor);
     }
-    setIsResult(false); 
+    setIsResult(false);
   };
 
   const limpiar = () => {
     setN('');
-    setIsResult(false); 
+    setIsResult(false);
   };
 
-  const igual = () => {
+  const igual = async () => {
     try {
-      const resultado = evaluate(n);
-      setN(String(resultado));
-      setIsResult(true); 
-    } catch {
-      setN('Error'); 
-      setIsResult(false);
+      const response = await fetch('http://api.mathjs.org/v4/', {
+        method: 'POST',
+        body: JSON.stringify({ expr: n }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la API');
+      }
+
+      const data = await response.json();
+      setN(String(data.result)); 
+      setIsResult(true);
+    } catch (Error) {
+      throw new Error(response.statusText);
     }
   };
 
   const posNeg = () => {
     if (n && !isNaN(n)) {
-      setN((prev) => String(-Number(prev))); 
+      setN((prev) => String(-Number(prev)));
     }
   };
 
   return (
-    <>
-      <div className="contenedor">
-        <Calculadora
-          n={n}
-          texto={texto}
-          limpiar={limpiar}
-          igual={igual}
-          posNeg={posNeg}
-        />
-      </div>
-    </>
+    <div className="contenedor">
+      <Calculadora
+        n={n} 
+        texto={texto}
+        limpiar={limpiar}
+        igual={igual}
+        posNeg={posNeg}
+      />
+    </div>
   );
 }
-
 
 export default App;
