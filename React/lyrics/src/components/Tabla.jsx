@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Tabla.css'
 import { Table } from 'react-bootstrap'
 
 class Tabla extends Component {
@@ -9,28 +10,28 @@ class Tabla extends Component {
 
     renderData(data, index) {
         return (
-            <tr key={index}>
-                <td>{data.userId}</td>
-                <td>{data.id}</td>
-                <td>{data.title}</td>
-                <td>{data.body}</td>
-            </tr>
-        )
-    }
+          <tr key={index}>
+            <td>{index + 1}</td> {/* Usa el índice como ID */}
+            <td>{data.artist}</td>
+            <td>{data.song}</td>
+            <td>{data.lyrics}</td> {/* Asegúrate de que 'lyrics' está presente */}
+          </tr>
+        );
+      }
 
     render() {
         return (
             <Table responsive striped bordered hover size="sm">
                 <thead>
                     <tr>
-                        <th>User ID</th>
                         <th>ID</th>
-                        <th>Title</th>
-                        <th>Body</th>
+                        <th>Artist</th>
+                        <th>Song</th>
+                        <th>Letra</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.data.map(this.renderData)}
+                    {this.props.data && this.props.data.map(this.renderData)}
                 </tbody>
             </Table>)
     }

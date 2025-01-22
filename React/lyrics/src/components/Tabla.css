@@ -1,0 +1,29 @@
+.table-container {
+    width: 100%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.table tr {
+    background-color: #f9f9f9;
+}
+
+.table td {
+    color: #333;
+}

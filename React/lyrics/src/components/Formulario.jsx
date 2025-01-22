@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import './Formulario.css';
+import { Row, Col, Form, FormGroup, Button } from 'react-bootstrap';
 
 class Formulario extends Component {
     constructor() {
         super()
         this.state = {
-            userId: '',
-            title: '',
-            body: ''
+            artist: '',
+            song: ''
         }
     }
     handleChange = event => {
@@ -14,30 +15,31 @@ class Formulario extends Component {
         const value = event.target.value;
         this.setState({ [name]: value });
     }
-    handleSubmit = event => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        fetch('https://api.lyrics.ovh/v1/${artist}/${song}', {
-            method: 'POST', 
-            body: JSON.stringify({ 
-              title: this.state.title,
-              body: this.state.body,
-              userId: this.state.userId
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8"
+        fetch(`https://api.lyrics.ovh/v1/${this.state.artist}/${this.state.song}`)
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('No se encontraron las letras de la canción.');
+          })
+          .then((data) => {
+            if (data && data.lyrics) {
+              this.props.passParams({
+                artist: this.state.artist,
+                song: this.state.song,
+                lyrics: data.lyrics,
+              });
+            } else {
+              alert('No se encontraron las letras de la canción.');
             }
           })
-          .then((response) => { 
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error(response.statusText);
-            }
-        })
-        .then(data => { 
-            this.props.passParams(data); 
-        })
-    }
+          .catch((error) => {
+            console.error('Error fetching the lyrics:', error);
+            alert('Error al obtener las letras de la canción.');
+          });
+      };
 
     render() {
         return (
@@ -45,26 +47,20 @@ class Formulario extends Component {
             <Row>
                 <Col>
                     <Form.Group>
-                        <Form.Label>User ID</Form.Label>
-                        <Form.Control required type="number" min="1" placeholder="Enter user ID" name="userId" value={this.state.userId} onChange={this.handleChange} />
+                        <Form.Label>Cantante: </Form.Label>
+                        <Form.Control required placeholder="Enter singer" name="artist" value={this.state.artist} onChange={this.handleChange} /> 
                     </Form.Group>
                 </Col>
                 <Col>
                     <Form.Group>
-                        <Form.Label>Title:</Form.Label>
-                        <Form.Control required placeholder="Enter title" name="title" value={this.state.title} onChange={this.handleChange} />
-                    </Form.Group>
-                </Col>
-                <Col>
-                    <Form.Group>
-                        <Form.Label>Body:</Form.Label>
-                        <Form.Control required placeholder="Enter body" name="body" value={this.state.body} onChange={this.handleChange} />
+                        <Form.Label>Titulo: </Form.Label>
+                        <Form.Control required placeholder="Enter title" name="song" value={this.state.song} onChange={this.handleChange} />
                     </Form.Group>
                 </Col>
             </Row>
             <Row>
                 <FormGroup>
-                    <Button type="submit" >Add </Button>
+                    <Button type="submit" >Buscar </Button>
                 </FormGroup>
             </Row>
         </Form>)
