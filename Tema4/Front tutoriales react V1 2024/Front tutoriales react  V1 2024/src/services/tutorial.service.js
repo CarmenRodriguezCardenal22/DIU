@@ -10,6 +10,7 @@ class TutorialDataService {
   }
 
   create(data) {
+    console.log(data);
     return http.post("/tutorials", data);
   }
 

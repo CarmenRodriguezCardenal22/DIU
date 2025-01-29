@@ -96,7 +96,7 @@ export default class TutorialsList extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Search by title"
+              placeholder="Buscar por titulo"
               value={searchTitle}
               onChange={this.onChangeSearchTitle}
             />
@@ -106,13 +106,13 @@ export default class TutorialsList extends Component {
                 type="button"
                 onClick={this.searchTitle}
               >
-                Search
+                Buscar
               </button>
             </div>
           </div>
         </div>
         <div className="col-md-6">
-          <h4>Tutorials List</h4>
+          <h4>Lista de Tutoriales</h4>
 
           <ul className="list-group">
             {/*El operedor && lógico. Los dos elementos tienen que ser true, en este caso no vacio, para que se ejecute la sentencia */}
@@ -138,7 +138,7 @@ export default class TutorialsList extends Component {
             className="m-3 btn btn-sm btn-danger"
             onClick={this.removeAllTutorials}
           >
-            Remove All
+            Borrar Todo
           </button>
         </div>
         <div className="col-md-6">
@@ -149,19 +149,25 @@ export default class TutorialsList extends Component {
               <h4>Tutorial</h4>
               <div>
                 <label>
-                  <strong>Title:</strong>
+                  <strong>Id:</strong>
+                </label>{" "}
+                {currentTutorial.id.toString()}
+              </div>
+              <div>
+                <label>
+                  <strong>Titulo:</strong>
                 </label>{" "}
                 {currentTutorial.title}
               </div>
               <div>
                 <label>
-                  <strong>Description:</strong>
+                  <strong>Descripcion:</strong>
                 </label>{" "}
                 {currentTutorial.description}
               </div>
               <div>
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Estado:</strong>
                 </label>{" "}
                 {/* renderizado condicional */}
                 {currentTutorial.published ? "Published" : "Pending"}
@@ -173,13 +179,13 @@ export default class TutorialsList extends Component {
                 to={"/tutorials/" + currentTutorial.id}
                 className="badge badge-warning"
               >
-                Edit
+                Editar
               </Link>
             </div>
           ) : (
             <div>
               <br />
-              <p>Please click on a Tutorial...</p>
+              <p>Por favor selecciona un tutorial.</p>
             </div>
           )}
         </div>
