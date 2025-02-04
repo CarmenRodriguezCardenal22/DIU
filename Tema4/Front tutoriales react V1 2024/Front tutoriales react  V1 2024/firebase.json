@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build",
+    "site": "proyectoreact-87835-ede1a",
     "ignore": [
       "firebase.json",
       "**/.*",

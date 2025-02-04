@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:8098/api/v1",
+  baseURL: "http://tutorials2025crc.us-east-1.elasticbeanstalk.com/api/v1/tutorials",
   headers: {
     "Content-type": "application/json"
   }
