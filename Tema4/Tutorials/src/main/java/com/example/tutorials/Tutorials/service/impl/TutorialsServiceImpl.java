@@ -65,6 +65,7 @@ public class TutorialsServiceImpl implements TutorialsService {
             existingTutorial.setTitle(tutorial.getTitle());
             existingTutorial.setDescription(tutorial.getDescription());
             existingTutorial.setPublished(tutorial.getPublished());
+            existingTutorial.setFoto(tutorial.getFoto());
 
             Tutorials updatedTutorial = tutorialsRepository.save(existingTutorial);
 
