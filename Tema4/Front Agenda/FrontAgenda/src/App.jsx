@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Route, Routes} from "react-router-dom";
 import AgendaList from "./components/agenda-list.components.jsx";
 import AddPerson from "./components/add-person.components.jsx";
+import SignIn from "./components/SignIn.components.jsx";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -21,6 +22,11 @@ class App extends Component {
                   Add
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/SignIn" className="nav-link">
+                  Loggin
+                </Link>
+              </li>
             </div>
           </nav>
 
@@ -29,6 +35,7 @@ class App extends Component {
               <Route path="/" element={<AgendaList />} />
               <Route path="/FrontAgenda" element={<AgendaList />} />
               <Route path="/add" element={<AddPerson />} />
+              <Route path="/SignIn" element={<SignIn />} />
             </Routes>
           </div>
         </div>

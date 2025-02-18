@@ -43,6 +43,7 @@ const AddPerson = () => {
     };
 
     const savePerson = () => {
+        console.log("hola");
         const data = { dni, name, lastname, street, city, postalCode, birthday };
 
         AgendaDataService.create(data)
@@ -135,7 +136,7 @@ const AddPerson = () => {
                         />
                     </div>
 
-                    <button onClick={savePerson} className="btn btn-success">
+                    <button type="submit" onClick={savePerson} className="btn btn-success">
                         Submit
                     </button>
                 </div>
