@@ -1,19 +1,82 @@
-*{
-  color: black;
+/* Estilos globales */
+* {
+  box-sizing: border-box;
 }
 
-.list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+html,
+body {
+  height: 100%;
 }
 
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: #e0e4ff;
+  font-family: "Euclid Circular A", sans-serif;
+  color: #1b1e40;
 }
 
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+/* Navbar fija y a pantalla completa */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: #1b1e40;
+  padding: 0 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.navbar .navbar-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar .nav-item .nav-link {
+  color: #f7f7f7;
+  font-size: 20px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-item .nav-link:hover {
+  color: #a3a6ff;
+}
+
+/* Contenido principal con margen superior para navbar fija */
+.container {
+  margin-top: 90px;
+  padding: 30px;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+/* Ajuste para responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+  }
+
+  .navbar .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .container {
+    margin-top: 110px;
+    padding: 20px;
+  }
 }

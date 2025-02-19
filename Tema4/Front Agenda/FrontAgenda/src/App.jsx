@@ -3,6 +3,7 @@ import { Link, Route, Routes} from "react-router-dom";
 import AgendaList from "./components/agenda-list.components.jsx";
 import AddPerson from "./components/add-person.components.jsx";
 import SignIn from "./components/SignIn.components.jsx";
+import SignUp from "./components/SignUp.components.jsx";
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -36,6 +37,7 @@ class App extends Component {
               <Route path="/FrontAgenda" element={<AgendaList />} />
               <Route path="/add" element={<AddPerson />} />
               <Route path="/SignIn" element={<SignIn />} />
+              <Route path="/SignUp" element={<SignUp />} />
             </Routes>
           </div>
         </div>
