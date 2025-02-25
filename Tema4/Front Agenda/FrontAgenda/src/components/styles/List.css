@@ -1,0 +1,132 @@
+/* Contenedor principal de la lista de contactos */
+.flex {
+    display: flex;
+    height: 60vh;
+    background-color: #2d2f44; /* Fondo oscuro */
+    color: white;
+  }
+  
+  /* Contenedor de la lista de contactos */
+  /* .w-2/5 {
+    width: 40%;
+    border-right: 1px solid #4a4e68; /* Línea divisoria 
+    padding: 20px;
+  } */
+  
+  /* Estilo de las filas de la tabla */
+  table {
+    width: 100%;
+    text-align: left;
+    background-color: #2d2f44; /* Fondo oscuro */
+    border-radius: 8px;
+  }
+  
+  thead tr {
+    background-color: #383d54; /* Fondo para el encabezado */
+  }
+  
+  th {
+    padding: 10px;
+    font-weight: 600;
+    color: #f0f0f0;
+  }
+  
+  tbody tr {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    background-color: #4a4e68; /* Hover en las filas */
+  }
+  
+  tbody tr.selected {
+    background-color: #383d54; /* Fila seleccionada */
+  }
+  
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #4a4e68; /* Borde entre las filas */
+  }
+  
+  /* Detalles de la persona seleccionada */
+  /* .w-3/5 {
+    width: 60%;
+    padding: 20px;
+  } */
+  
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .mt-4 p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  strong {
+    color: #f7f7f7;
+  }
+  
+  button {
+    padding: 6px 16px; /* Reducido el padding para que los botones sean más pequeños */
+    border-radius: 6px;
+    font-weight: 600;
+    height: 35px; /* Altura de los botones */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  button.bg-blue-500 {
+    background-color: #1d4ed8;
+    color: white;
+  }
+  
+  button.bg-blue-500:hover {
+    background-color: #2563eb;
+  }
+  
+  button.bg-yellow-500 {
+    background-color: #f59e0b;
+    color: white;
+  }
+  
+  button.bg-yellow-500:hover {
+    background-color: #d97706;
+  }
+  
+  button.bg-red-500 {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  button.bg-red-500:hover {
+    background-color: #dc2626;
+  }
+  
+  
+  /* Estilo para el mensaje de "Seleccionar una persona" */
+  .mt-4 {
+    margin-top: 16px;
+  }
+  
+  .mt-6 {
+    margin-top: 24px;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .gap-4 {
+    gap: 16px;
+    height: 0vh;
+  }
+  

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import './styles/List.css';
 import AgendaDataService from "../service/agenda.service";
 
 export default function ContactList() {
