@@ -6,7 +6,7 @@ class AgendaDataService {
   }
 
   get(id) {
-    return http.get(`/Agenda/${dni}`);
+    return http.get(`/Agenda/${id}`); 
   }
 
   create(data) {
@@ -15,23 +15,20 @@ class AgendaDataService {
   }
 
   update(id, data) {
-    return http.put(`/Agenda/${dni}`, data);
+    return http.put(`/Agenda/${id}`, data); 
   }
 
   delete(id) {
-    return http.delete(`/Agenda/${dni}`);
+    return http.delete(`/Agenda/${id}`); 
   }
 
   deleteAll() {
     return http.delete(`/Agenda`);
   }
 
- // findByTitle(title) {
- //   return http.get(`/tutorials?title=${title}`);
- // }
- findByTitle(title) {
-     return http.get(`/Agenda/name/${name}`);
-   }
+  findByTitle(name) {
+    return http.get(`/Agenda/name/${name}`); 
+  }
 }
 
 export default new AgendaDataService();

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle } from "../firebase";
-import { auth } from "../firebase";
 import "./styles/SignIn.css";
 import logo from "../assets/logo.png";
 
-const strengthLabels = ["weak", "medium", "strong"];
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -13,29 +10,31 @@ const SignIn = () => {
   const [error, setError] = useState(null);
   const [strength, setStrength] = useState("");
 
-  const signInWithEmailAndPasswordHandler = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      // Aquí añades la lógica para el login con email y contraseña (si tienes Firebase Auth configurado)
+      console.log("Iniciando sesión...");
     } catch (error) {
-      setError("Error signing in with password and email!");
-      console.error("Error signing in with password and email", error);
+      setError(error.message);
     }
   };
 
-  const onChangeHandler = (event) => {
-    const { name, value } = event.currentTarget;
-    if (name === "userEmail") setEmail(value);
-    else if (name === "userPassword") setPassword(value);
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    if (name === 'userEmail') setEmail(value);
+    if (name === 'userPassword') {
+      setPassword(value);
+      checkPasswordStrength(value);  // Llamar a la función para evaluar la fortaleza
+    }
   };
-
 
   return (
     <div className="login-card">
       <img src={logo} alt="Logo" />
       <h2>Sign In</h2>
-      {error && <div className="error-message">{error}</div>}
-      <form className="login-form" onSubmit={signInWithEmailAndPasswordHandler}>
+      {error && <p className="error-message">{error}</p>}
+      <form className="login-form" onSubmit={handleSubmit}>
         <input
           autoComplete="off"
           spellCheck="false"
@@ -47,16 +46,23 @@ const SignIn = () => {
           onChange={onChangeHandler}
           required
         />
-        <div className={`bars ${strength}`}>
-          <div></div>
-        </div>
-        <div className="strength">{strength && <>{strength} password</>}</div>
+        <input
+          autoComplete="off"
+          spellCheck="false"
+          className="control"
+          type="password"
+          name="userPassword"
+          placeholder="Contraseña"
+          value={password}
+          onChange={onChangeHandler}
+          required
+        />
         <button className="control" type="submit">
-          JOIN NOW
+          Iniciar Sesión
         </button>
       </form>
       <p className="text-center">
-        Don't have an account? <Link to="SignUp">Sign up here</Link>
+        Don't have an account? <Link to="/SignUp">Sign up here</Link>
       </p>
     </div>
   );
