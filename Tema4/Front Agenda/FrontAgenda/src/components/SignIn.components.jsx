@@ -61,9 +61,6 @@ const SignIn = () => {
           Iniciar Sesión
         </button>
       </form>
-      <p className="text-center">
-        Don't have an account? <Link to="/SignUp">Sign up here</Link>
-      </p>
     </div>
   );
 };
