@@ -14,6 +14,7 @@ public class TutorialsMapper {
                 .description(tutorials.getDescription())
                 .published(tutorials.getPublished())
                 .foto(tutorials.getFoto())
+                .dni(tutorials.getDni()) // Mapeo del nuevo campo
                 .build();
     }
 
@@ -24,6 +25,7 @@ public class TutorialsMapper {
                 .description(tutorials.getDescription())
                 .published(tutorials.getPublished())
                 .foto(tutorials.getFoto())
+                .dni(tutorials.getDni()) // Mapeo del nuevo campo
                 .build();
     }
 

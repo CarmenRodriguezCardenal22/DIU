@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./styles/SignIn.css";
 import logo from "../assets/logo.png";
 
 
@@ -61,6 +60,9 @@ const SignIn = () => {
           Iniciar Sesión
         </button>
       </form>
+      <p className="text-center">
+        Don't have an account? <Link to="/SignUp">Sign up here</Link>
+      </p>
     </div>
   );
 };

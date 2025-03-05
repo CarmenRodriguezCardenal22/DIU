@@ -1,0 +1,199 @@
+/* Contenedor principal de la lista de contactos */
+.flex {
+  display: flex;
+  height: 60vh;
+  background-color: #2d2f44; /* Fondo oscuro */
+  color: white;
+}
+
+/* Contenedor de la lista de contactos (lado izquierdo) */
+.list-container {
+  width: 40%;
+  border-right: 1px solid #4a4e68;
+  padding: 20px;
+  overflow-y: auto; /* Permite desplazamiento si hay muchos contactos */
+}
+
+/* Contenedor de detalles del contacto (lado derecho) */
+.details-container {
+  width: 60%;
+  padding: 20px;
+}
+
+/* Estilo de las filas de la tabla */
+table {
+  width: 100%;
+  text-align: left;
+  background-color: #2d2f44;
+  border-radius: 8px;
+}
+
+thead tr {
+  background-color: #383d54;
+}
+
+th {
+  padding: 10px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+tbody tr {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #4a4e68;
+}
+
+tbody tr.selected {
+  background-color: #383d54;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #4a4e68;
+}
+
+/* Ajuste de los títulos y detalles */
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.mt-4 p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+strong {
+  color: #f7f7f7;
+}
+
+/* Estilos de los botones */
+button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Estilos de colores para botones */
+button.bg-blue-500 {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+button.bg-blue-500:hover {
+  background-color: #2563eb;
+}
+
+button.bg-yellow-500 {
+  background-color: #f59e0b;
+  color: white;
+}
+
+button.bg-yellow-500:hover {
+  background-color: #d97706;
+}
+
+button.bg-red-500 {
+  background-color: #ef4444;
+  color: white;
+}
+
+button.bg-red-500:hover {
+  background-color: #dc2626;
+}
+
+/* Ajuste para el mensaje de "Seleccionar una persona" */
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mt-6 {
+  margin-top: 24px;
+}
+
+/* Espaciado entre botones */
+.gap-4 {
+  gap: 16px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .flex {
+      height: auto;
+      flex-direction: column;
+  }
+
+  .list-container,
+  .details-container {
+      width: 100%;
+      border-right: none;
+  }
+
+  table {
+      font-size: 14px;
+  }
+
+  th, td {
+      padding: 8px;
+  }
+
+  .gap-4 {
+      flex-wrap: wrap;
+  }
+}
+
+/* Ajustes para pantallas medianas */
+@media (max-width: 768px) {
+  h2 {
+      font-size: 1.1rem;
+  }
+
+  .mt-4 p {
+      font-size: 0.9rem;
+  }
+
+  button {
+      padding: 6px 14px;
+      font-size: 14px;
+  }
+}
+
+/* Ajustes para móviles pequeños */
+@media (max-width: 480px) {
+  .list-container {
+      padding: 15px;
+  }
+
+  table {
+      font-size: 12px;
+  }
+
+  th, td {
+      padding: 6px;
+  }
+
+  h2 {
+      font-size: 1rem;
+  }
+
+  .mt-4 p {
+      font-size: 0.8rem;
+  }
+
+  button {
+      padding: 5px 12px;
+      font-size: 12px;
+  }
+}

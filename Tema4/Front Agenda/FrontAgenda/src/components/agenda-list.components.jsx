@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './styles/List.css';
+import './../styles/List.css';
 import AgendaDataService from "../service/agenda.service";
 
-export default function ContactList() {
+export default function ContactList({ updateContacts }) {
     const [people, setPeople] = useState([]);
     const [selectedPerson, setSelectedPerson] = useState(null);
     const navigate = useNavigate();
@@ -14,7 +14,10 @@ export default function ContactList() {
 
     const fetchPeople = () => {
         AgendaDataService.getAll()
-            .then(response => setPeople(response.data || []))
+            .then(response => {
+                setPeople(response.data || []);
+                updateContacts(); // Actualizar la barra de progreso
+            })
             .catch(error => console.error("Error al obtener los contactos:", error));
     };
 
@@ -26,10 +29,12 @@ export default function ContactList() {
                 .then(() => {
                     setPeople(people.filter(person => person.dni !== selectedPerson.dni));
                     setSelectedPerson(null);
+                    updateContacts(); // Actualizar la barra de progreso
                 })
                 .catch(error => console.error("Error al eliminar el contacto:", error));
         }
     };
+
     const consultarTutorials = () => {
         if (!selectedPerson?.dni) return alert("Seleccione un contacto válido.");
         navigate(`/tutorials/${selectedPerson.dni}`);
@@ -80,12 +85,10 @@ export default function ContactList() {
                     <p className="mt-4">Seleccione una persona para ver los detalles.</p>
                 )}
 
-                <div className="mt-6 flex gap-4">
+                <div className="mt-6 gap-4">
                     <button className="px-4 py-2 bg-yellow-500 rounded" onClick={editPerson} disabled={!selectedPerson}>Editar</button>
                     <button className="px-4 py-2 bg-red-500 rounded" onClick={deletePerson} disabled={!selectedPerson}>Borrar</button>
-                    <br></br>
                     <button className="px-4 py-2 bg-blue-500 rounded" onClick={consultarTutorials} disabled={!selectedPerson}>Consultar Tutoriales</button>
-
                 </div>
             </div>
         </div>

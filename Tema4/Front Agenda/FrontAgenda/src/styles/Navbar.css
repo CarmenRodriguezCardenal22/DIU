@@ -1,0 +1,93 @@
+/* Navbar Principal */
+.navbar {
+  width: 100%;
+ 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Asegura que los elementos estén bien distribuidos */
+  background-color: #1b1e40;
+  padding: 0 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Contenedor del logo y enlaces */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly; /* Reduce la separación extrema */
+  padding: 0 20px; /* Añade un poco de margen interno */
+}
+
+/* Lista de navegación */
+.navbar .navbar-nav {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos de los enlaces */
+.navbar .nav-item .nav-link {
+  color: #f7f7f7;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color ;
+}
+
+.navbar .nav-item .nav-link:hover {
+  color: #a3a6ff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .navbar {
+      padding: 0 20px;
+  }
+
+  .navbar .nav-item .nav-link {
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+      height: auto;
+      padding: 15px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-toggle {
+      display: block;
+  }
+
+  .navbar .navbar-nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
+      gap: 15px;
+  }
+
+  .navbar .navbar-nav.active {
+      display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+      padding: 10px 15px;
+  }
+
+  .navbar .nav-item .nav-link {
+      font-size: 14px;
+  }
+}

@@ -57,21 +57,21 @@ public class TutorialsServiceImpl implements TutorialsService {
     }
 
     @Override
-    public TutorialsDto updateTutorial(TutorialsDto tutorial) {
-        Optional<Tutorials> existingTutorialOptional = tutorialsRepository.findById(tutorial.getId());
-
-        if (existingTutorialOptional.isPresent()) {
-            Tutorials existingTutorial = existingTutorialOptional.get();
-            existingTutorial.setTitle(tutorial.getTitle());
-            existingTutorial.setDescription(tutorial.getDescription());
-            existingTutorial.setPublished(tutorial.getPublished());
-            existingTutorial.setFoto(tutorial.getFoto());
-
-            Tutorials updatedTutorial = tutorialsRepository.save(existingTutorial);
-
+    public TutorialsDto updateTutorial(TutorialsDto tutorial, String id) {
+        // Verificar si el tutorial existe
+        Optional<Tutorials> existingTutorial = tutorialsRepository.findById(id);
+        if (existingTutorial.isPresent()) {
+            Tutorials updatedTutorial = existingTutorial.get();
+            updatedTutorial.setTitle(tutorial.getTitle());
+            updatedTutorial.setDescription(tutorial.getDescription());
+            updatedTutorial.setPublished(tutorial.getPublished());
+            updatedTutorial.setFoto(tutorial.getFoto());
+            updatedTutorial.setDni(tutorial.getDni()); // Si agregaste el campo DNI
+            tutorialsRepository.save(updatedTutorial);
             return TutorialsMapper.tutorialsMapperEntityToDto(updatedTutorial);
         } else {
-            return null;
+            // Aquí puedes manejar el caso de que el tutorial no exista
+            throw new RuntimeException("Tutorial no encontrado");
         }
     }
 
@@ -98,6 +98,11 @@ public class TutorialsServiceImpl implements TutorialsService {
         return ResponseEntity.ok().build();
     }
 
+    @Override
+    public List<TutorialsDto> getTutorialsByDni(String dni) {
+        List<Tutorials> tutorials = tutorialsRepository.findByDniAndPublishedTrue(dni);
+        return TutorialsMapper.tutorialsListMapperEntityToDto(tutorials);
+    }
 
 
 }

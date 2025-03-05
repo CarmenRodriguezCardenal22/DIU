@@ -1,12 +1,11 @@
 import React from 'react';
-import './styles/Navbar.css'; // Si tienes estilos específicos para la navbar, los importas aquí
+import './../styles/Navbar.css'; // Si tienes estilos específicos para la navbar, los importas aquí
 import { Link } from 'react-router-dom'; // Importa Link para navegar entre rutas
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <div className="navbar-nav mr-auto">
+        <nav className="navbar">
+          <div className="navbar-container">
             <li className="nav-item">
               <Link to="/FrontAgenda" className="nav-link">Contactos</Link>
             </li>
@@ -18,7 +17,6 @@ const Navbar = () => {
             </li>
           </div>
         </nav>
-    </div>
   );
 };
 

@@ -49,7 +49,7 @@ public class TutorialsController implements TutorialsAPI {
     @Override
     @PutMapping("/tutorials/{id}")
     public TutorialsDto updateTutorial(@RequestBody TutorialsDto tutorial,@PathVariable String id) {
-        return tutorialsService.updateTutorial(tutorial);
+        return tutorialsService.updateTutorial(tutorial, id);
     }
 
     @Override
@@ -62,5 +62,10 @@ public class TutorialsController implements TutorialsAPI {
     @DeleteMapping("/tutorials")
     public ResponseEntity deleteAllTutorials() {
         return tutorialsService.deleteAllTutorials();
+    }
+
+    @GetMapping("/tutorials/person/{dni}")
+    public List<TutorialsDto> getTutorialsByDni(@PathVariable String dni) {
+        return tutorialsService.getTutorialsByDni(dni);
     }
 }
