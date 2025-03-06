@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.6.3
+Built-By: carmen
+Build-Jdk: 17.0.14
+Implementation-Title: agenda
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.example
+Implementation-URL: https://spring.io/projects/spring-boot/agenda
+Main-Class: com.example.agenda.AgendaApplication
+

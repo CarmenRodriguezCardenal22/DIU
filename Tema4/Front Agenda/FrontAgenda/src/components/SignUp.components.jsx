@@ -1,80 +1,37 @@
-import React, { useState } from 'react';
-
-const strengthLabels = ["weak", "medium", "strong"];
+// SignUp.components.jsx
+import React, { useState } from "react";
+import { signUp } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [strength, setStrength] = useState('');
-
-  // Lógica para determinar la fortaleza de la contraseña
-  const checkPasswordStrength = (password) => {
-    let strength = "";
-    const lengthCriteria = password.length >= 5;
-    const numberCriteria = /[0-9]/.test(password);
-    const specialCharCriteria = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    const uppercaseCriteria = /[A-Z]/.test(password);
-
-    if (lengthCriteria && (numberCriteria || specialCharCriteria) && uppercaseCriteria) {
-      strength = "strong";
-    } else if (lengthCriteria && (numberCriteria || specialCharCriteria)) {
-      strength = "medium";
-    } else if (lengthCriteria) {
-      strength = "weak";
-    }
-
-    setStrength(strength);
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
     try {
-      // Aquí añades la lógica para el registro con email y contraseña
-      console.log("Registrando...");
+      await signUp(email, password, { displayName });
+      navigate("/");
     } catch (error) {
-      setError(error.message);
+      setError("Error al registrarse. Inténtalo de nuevo.");
     }
   };
+
 
   return (
     <div className="login-card">
       <h2>Registrarse</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <input
-          autoComplete="off"
-          spellCheck="false"
-          className="control"
-          type="email"
-          name="userEmail"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          autoComplete="off"
-          spellCheck="false"
-          className="control"
-          type="password"
-          name="userPassword"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            checkPasswordStrength(e.target.value);  // Llamar a la función para evaluar la fortaleza
-          }}
-          required
-        />
-        <div className={`bars ${strength}`}>
-          <div></div>
-        </div>
-        <div className="strength">{strength && <>{strength} password</>}</div>
-        <button className="control" type="submit">
-          Registrar
-        </button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Nombre" value={displayName} onChange={(e) => setDisplayName(e.target.value)} required />
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <button type="submit">Registrarse</button>
       </form>
-      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

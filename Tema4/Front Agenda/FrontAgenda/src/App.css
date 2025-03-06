@@ -8,12 +8,13 @@ body,
 .wrapper {
   height: 100%;
   margin: 0;
+  padding: 0; /* Eliminar padding por defecto */
 }
 
 body {
   display: flex; /* Cambié display a flex */
   justify-content: center; /* Centrado horizontal */
-  align-items: center; /* Centrado vertical */
+  align-items: flex-start; /* Asegura que el contenido esté alineado desde arriba */
   margin: 0;
   background: #f2f3ff;
   font-family: "Euclid Circular A";
@@ -29,7 +30,7 @@ button {
 
 /* Navbar fija y a pantalla completa (actualizado) */
 .navbar {
-  width: 100vw; /* Asegura que ocupe el ancho total */
+  width: 100%; /* Asegura que ocupe el ancho completo */
   position: fixed;
   top: 0;
   left: 0;
@@ -43,10 +44,15 @@ button {
   transition: background-color 0.3s ease;
 }
 
+.ancho{
+  width: 100%;
+}
+/* Asegura que el contenido comienza debajo de la navbar */
 .container {
-  margin-top: 90px;
   width: 100%;
   max-width: 1200px;
+  margin-top: 80px;
+  padding: 0 20px;
 }
 
 /* Estilos del login-card */

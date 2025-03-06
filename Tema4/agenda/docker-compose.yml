@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+ backend:
+  build: .
+  container_name: backend
+  ports:
+   - "8099:8099"  # Cambia esto para exponer el puerto 8099
+  depends_on:
+   - mongo
+  environment:
+   SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/agenda
+  networks:
+   - mired
+
+ mongo:
+  image: mongo:latest
+  container_name: mongo
+  ports:
+   - "27018:27017"
+  networks:
+   - mired
+
+networks:
+ mired:
+  ipam:
+   config:
+    - subnet: 182.28.0.0/16
+      gateway: 182.28.0.1

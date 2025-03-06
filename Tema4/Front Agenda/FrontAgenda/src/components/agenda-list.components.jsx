@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './../styles/List.css';
 import AgendaDataService from "../service/agenda.service";
+import { auth } from "../firebase"; // Importamos la autenticación de Firebase
 
 export default function ContactList({ updateContacts }) {
     const [people, setPeople] = useState([]);
@@ -21,7 +22,19 @@ export default function ContactList({ updateContacts }) {
             .catch(error => console.error("Error al obtener los contactos:", error));
     };
 
+    // Verificar si el usuario está logueado
+    const isUserLoggedIn = () => {
+        return auth.currentUser !== null;
+    };
+
+    // Manejo de la eliminación de una persona
     const deletePerson = () => {
+        if (!isUserLoggedIn()) {
+            alert("Debes iniciar sesión para eliminar un contacto.");
+            navigate("/SignIn"); // Redirigir a la página de inicio de sesión
+            return;
+        }
+
         if (!selectedPerson) return alert("Seleccione un contacto para eliminar.");
 
         if (window.confirm(`¿Está seguro de eliminar a ${selectedPerson.name}?`)) {
@@ -35,15 +48,30 @@ export default function ContactList({ updateContacts }) {
         }
     };
 
+    // Consultar los tutoriales de una persona
     const consultarTutorials = () => {
+        if (!isUserLoggedIn()) {
+            alert("Debes iniciar sesión para consultar tutoriales.");
+            navigate("/SignIn"); // Redirigir a la página de inicio de sesión
+            return;
+        }
+
         if (!selectedPerson?.dni) return alert("Seleccione un contacto válido.");
         navigate(`/tutorials/${selectedPerson.dni}`);
     };
-      
+
+    // Editar los detalles de una persona
     const editPerson = () => {
+        if (!isUserLoggedIn()) {
+            alert("Debes iniciar sesión para editar un contacto.");
+            navigate("/SignIn"); // Redirigir a la página de inicio de sesión
+            return;
+        }
+
         if (!selectedPerson?.dni) return alert("Seleccione un contacto válido para editar.");
         navigate(`/edit/${selectedPerson.dni}`);
     };
+
     return (
         <div className="flex h-screen w-full bg-gray-800 text-white">
             <div className="w-2/5 border-r border-gray-600 p-4">

@@ -1,7 +1,7 @@
 /* Contenedor principal de la lista de contactos */
 .flex {
   display: flex;
-  height: 60vh;
+  height: 65vh;
   background-color: #2d2f44; /* Fondo oscuro */
   color: white;
 }
@@ -16,7 +16,7 @@
 
 /* Contenedor de detalles del contacto (lado derecho) */
 .details-container {
-  width: 60%;
+  width: 100%;
   padding: 20px;
 }
 
@@ -58,9 +58,9 @@ td {
 
 /* Ajuste de los títulos y detalles */
 h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 100;
+  margin-bottom: 17px;
 }
 
 .mt-4 p {
@@ -76,7 +76,7 @@ strong {
 button {
   padding: 8px 16px;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

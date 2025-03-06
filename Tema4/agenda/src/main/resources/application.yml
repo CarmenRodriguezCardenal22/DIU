@@ -6,7 +6,8 @@ spring:
 main:
   allow-bean-definition-overriding: true
 data:
-  mongodb:
-    database: agendasservice_db
-    #host: mongo_DB #182.28.0.11
-    port: 27017
+  data:
+    mongodb:
+      database: agendasservice_db
+      host: mongo  # Cambia esto a 'mongo'
+      port: 27017  # Cambia el puerto a 27017

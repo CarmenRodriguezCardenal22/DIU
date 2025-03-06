@@ -1,64 +1,43 @@
+// SignIn.components.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { signIn } from "../firebase";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [strength, setStrength] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Aquí añades la lógica para el login con email y contraseña (si tienes Firebase Auth configurado)
-      console.log("Iniciando sesión...");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
 
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    if (name === 'userEmail') setEmail(value);
-    if (name === 'userPassword') {
-      setPassword(value);
-      checkPasswordStrength(value);  // Llamar a la función para evaluar la fortaleza
+    const user = await signIn(email, password);
+    if (user) {
+      navigate("/");  // Redirige al usuario a la página principal
     }
   };
 
   return (
     <div className="login-card">
       <img src={logo} alt="Logo" />
-      <h2>Sign In</h2>
-      {error && <p className="error-message">{error}</p>}
-      <form className="login-form" onSubmit={handleSubmit}>
+      <h2>Iniciar sesión</h2>
+      <form onSubmit={handleSubmit}>
         <input
-          autoComplete="off"
-          spellCheck="false"
-          className="control"
           type="email"
-          name="userEmail"
-          placeholder="Email"
           value={email}
-          onChange={onChangeHandler}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Correo electrónico"
           required
         />
         <input
-          autoComplete="off"
-          spellCheck="false"
-          className="control"
           type="password"
-          name="userPassword"
-          placeholder="Contraseña"
           value={password}
-          onChange={onChangeHandler}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Contraseña"
           required
         />
-        <button className="control" type="submit">
-          Iniciar Sesión
-        </button>
+        <button type="submit">Iniciar sesión</button>
       </form>
       <p className="text-center">
         Don't have an account? <Link to="/SignUp">Sign up here</Link>

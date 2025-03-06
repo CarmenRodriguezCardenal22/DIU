@@ -6,125 +6,107 @@ const EditPerson = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const [dni, setDni] = useState('');
-    const [name, setName] = useState('');
-    const [lastname, setLastname] = useState('');
-    const [street, setStreet] = useState('');
-    const [city, setCity] = useState('');
-    const [postalCode, setPostalCode] = useState('');
-    const [birthday, setBirthday] = useState('');
+    const [person, setPerson] = useState({
+        dni: "",
+        name: "",
+        lastname: "",
+        street: "",
+        city: "",
+        postalCode: "",
+        birthday: ""
+    });
+
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(null);
+    const [isModified, setIsModified] = useState(false);
 
     useEffect(() => {
         AgendaDataService.get(id)
             .then(response => {
-                const { dni, name, lastname, street, city, postalCode, birthday } = response.data;
-                setDni(dni);
-                setName(name);
-                setLastname(lastname);
-                setStreet(street);
-                setCity(city);
-                setPostalCode(postalCode);
-                setBirthday(birthday);
+                setPerson(response.data);
             })
             .catch(e => {
                 console.error("Error al obtener el contacto:", e);
+                setError("No se pudo cargar el contacto.");
             });
     }, [id]);
 
-    const onChangeDni = (e) => {
-        setDni(e.target.value);
-    };
-
-    const onChangeName = (e) => {
-        setName(e.target.value);
-    };
-
-    const onChangeLastName = (e) => {
-        setLastname(e.target.value);
-    };
-
-    const onChangeStreet = (e) => {
-        setStreet(e.target.value);
-    };
-
-    const onChangeCity = (e) => {
-        setCity(e.target.value);
-    };
-
-    const onChangePostalCode = (e) => {
-        setPostalCode(e.target.value);
-    };
-
-    const onChangeBirthday = (e) => {
-        setBirthday(e.target.value);
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setPerson(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+        setIsModified(true);
     };
 
     const updatePerson = () => {
-        const data = { dni, name, lastname, street, city, postalCode, birthday };
-
-        AgendaDataService.update(id, data)
+        AgendaDataService.update(id, person)
             .then(response => {
                 setSubmitted(true);
-                console.log(response.data);
+                console.log("Contacto actualizado:", response.data);
             })
             .catch(e => {
                 console.error("Error al actualizar el contacto:", e);
+                setError("No se pudo actualizar el contacto.");
             });
     };
 
     const newPerson = () => {
-        navigate("/add");
+        navigate("/FrontAgenda");
     };
 
     return (
         <div className="submit-form">
             {submitted ? (
                 <div>
-                    <h4>Contacto actualizado con exito!</h4>
+                    <h4>¡Contacto actualizado con éxito!</h4>
                     <button className="btn btn-success" onClick={newPerson}>
-                        Añadir
+                        Volver
                     </button>
                 </div>
             ) : (
                 <div>
+                    <h2>Editar Contacto</h2>
+                    {error && <div className="alert alert-danger">{error}</div>}
+
                     <div className="form-group">
-                        <label htmlFor="dni">Dni</label>
-                        <input type="text" className="form-control" id="dni" required value={dni} onChange={onChangeDni} name="dni" />
+                        <label htmlFor="dni">DNI</label>
+                        <input type="text" className="form-control" id="dni" required value={person.dni} onChange={handleInputChange} name="dni" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input type="text" className="form-control" id="name" required value={name} onChange={onChangeName} name="name" />
+                        <label htmlFor="name">Nombre</label>
+                        <input type="text" className="form-control" id="name" required value={person.name} onChange={handleInputChange} name="name" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="lastname">LastName</label>
-                        <input type="text" className="form-control" id="lastname" required value={lastname} onChange={onChangeLastName} name="lastname" />
+                        <label htmlFor="lastname">Apellido</label>
+                        <input type="text" className="form-control" id="lastname" required value={person.lastname} onChange={handleInputChange} name="lastname" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="street">Street</label>
-                        <input type="text" className="form-control" id="street" required value={street} onChange={onChangeStreet} name="street" />
+                        <label htmlFor="street">Calle</label>
+                        <input type="text" className="form-control" id="street" required value={person.street} onChange={handleInputChange} name="street" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="city">City</label>
-                        <input type="text" className="form-control" id="city" required value={city} onChange={onChangeCity} name="city" />
+                        <label htmlFor="city">Ciudad</label>
+                        <input type="text" className="form-control" id="city" required value={person.city} onChange={handleInputChange} name="city" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="postalCode">Postal Code</label>
-                        <input type="text" className="form-control" id="postalCode" required value={postalCode} onChange={onChangePostalCode} name="postalCode" />
+                        <label htmlFor="postalCode">Código Postal</label>
+                        <input type="text" className="form-control" id="postalCode" required value={person.postalCode} onChange={handleInputChange} name="postalCode" />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="birthday">Birthday</label>
-                        <input type="date" className="form-control" id="birthday" required value={birthday} onChange={onChangeBirthday} name="birthday" />
+                        <label htmlFor="birthday">Fecha de Nacimiento</label>
+                        <input type="date" className="form-control" id="birthday" required value={person.birthday} onChange={handleInputChange} name="birthday" />
                     </div>
 
-                    <button type="submit" onClick={updatePerson} className="btn btn-success">
-                        Submit
+                    <button type="submit" onClick={updatePerson} className="btn btn-success" disabled={!isModified}>
+                        Actualizar
                     </button>
                 </div>
             )}
@@ -133,3 +115,4 @@ const EditPerson = () => {
 };
 
 export default EditPerson;
+
