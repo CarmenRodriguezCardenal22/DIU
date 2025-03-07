@@ -8,6 +8,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PersonDto {
     private String dni;
     private String name;
@@ -16,4 +18,5 @@ public class PersonDto {
     private String postalCode;
     private String city;
     private LocalDate birthday;
+
 }

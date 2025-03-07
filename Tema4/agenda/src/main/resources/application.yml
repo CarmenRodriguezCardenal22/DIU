@@ -1,13 +1,14 @@
 server:
   port: 8099
+
 spring:
   application:
-    name:agendaService
-main:
-  allow-bean-definition-overriding: true
-data:
+    name: agendaService
+  main:
+    allow-bean-definition-overriding: true
   data:
     mongodb:
       database: agendasservice_db
-      host: mongo  # Cambia esto a 'mongo'
-      port: 27017  # Cambia el puerto a 27017
+      host: mongo_DB
+      port: 27017
+

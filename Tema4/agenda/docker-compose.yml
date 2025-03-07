@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
- backend:
+ backendagenda:
   build: .
-  container_name: backend
+  container_name: backendagenda
   ports:
    - "8099:8099"  # Cambia esto para exponer el puerto 8099
   depends_on:
@@ -13,9 +13,24 @@ services:
   networks:
    - mired
 
+ backendtutorial:
+  build:
+   context: /home/usuario/DIU/Tema4/Tutorials
+   dockerfile: tutorialsdockerfile.Dockerfile  # Especifica el nombre correcto del Dockerfile
+  container_name: backendtutorial
+  ports:
+   - "8098:8098"
+  depends_on:
+   - mongo
+  environment:
+   SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/agenda
+  networks:
+   - mired
+
+
  mongo:
   image: mongo:latest
-  container_name: mongo
+  container_name: mongo_DB
   ports:
    - "27018:27017"
   networks:
